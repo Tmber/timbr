@@ -10,22 +10,21 @@
 
 @implementation Field
 
-//+(NSMutableArray *) getMockData{
-//    Field *field1 = [[Field alloc] init];
-//    field1.name = @"Miles";
-//    field1.numberValue = @30;
-//    Field *field2 = [[Field alloc] init];
-//    field2.name = @"Miles";
-//    field2.numberValue = @31;
-//    Field *field3 = [[Field alloc] init];
-//    field3.name = @"Miles";
-//    field3.numberValue = @41;
-//    Field *field4 = [[Field alloc] init];
-//    field4.name = @"Miles";
-//    field4.numberValue = @10;
-//    NSMutableArray *array = [NSMutableArray array];
-//    [array addObjectsFromArray:@[field1, field2, field3, field4]];
-//    return array;
-//}
++(Field *) getMockField1{
+    Field *fld = [[Field alloc] init];
+    srand48(time(0));
+    double r = drand48();
+    fld.name = @"Miles";
+    fld.numberValue = @(r*10);
+    return fld;
+}
 
++(Field *) getMockField2{
+    Field *fld = [[Field alloc] init];
+    srand48(time(0));
+    double r = drand48();
+    fld.name = @"Gas Price";
+    fld.numberValue = @(2 + r);
+    return fld;
+}
 @end

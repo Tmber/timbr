@@ -11,13 +11,13 @@
 
 @implementation LogCategory
 
-//+(LogCategory *) getMockData{
-//    LogCategory *log = [[LogCategory alloc] init];
-//    log.name = @"Car Maintenance";
-//    Entry *entry = [[Entry alloc] init];
-//    entry = [Entry getMockArray];
-//    log.entries = @[entry];
-//    return log;
-//}
++(LogCategory *)getMockLog{
+    LogCategory *log = [[LogCategory alloc] init];
+    log.name = @"Car Maintenance";
+    log.entries = [NSMutableArray array];
+    [log.entries addObject:@[[Entry getMockEntry1]]];
+    [log.entries addObject:@[[Entry getMockEntry1]]];
+    return log;
+}
 
 @end

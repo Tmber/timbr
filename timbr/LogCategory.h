@@ -13,6 +13,6 @@
 @property (nonatomic, strong) NSMutableArray *entries;
 @property (nonatomic, strong) NSString *name;
 
-//+(LogCategory *) getMockData;
++(LogCategory *) getMockLog;
 
 @end

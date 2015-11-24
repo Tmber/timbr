@@ -11,11 +11,13 @@
 
 @implementation Entry
 
-//+(Entry *) getMockArray {
-//    Entry *entry = [[Entry alloc] init];
-//    [entry.fields addObjectsFromArray:[Field getMockData]];
-//    [entry.fields addObjectsFromArray:[Field getMockData]];
-//    return entry;
-//}
++(Entry *)getMockEntry1{
+    Entry *entry = [[Entry alloc] init];
+    entry.fields = [[NSMutableArray alloc] init];
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    [array addObjectsFromArray:@[[Field getMockField1], [Field getMockField2], [Field getMockField1], [Field getMockField2], [Field getMockField1], [Field getMockField2]]];
+    [entry.fields addObject:array];
+    return entry;
+}
 
 @end

@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSDate *dateValue;
 @property (nonatomic, strong) NSString *stringValue;
 
-//+(NSMutableArray *) getMockData;
++(Field *) getMockField1;
++(Field *) getMockField2;
 
 @end
