@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="DetailsTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GtA-rh-H7M" userLabel="Name">
+                        <rect key="frame" x="8" y="8" width="147" height="27"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="251" misplaced="YES" text="Thing" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMy-ZH-j1p" userLabel="Value">
+                        <rect key="frame" x="174" y="8" width="138" height="27"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="SMy-ZH-j1p" secondAttribute="bottom" constant="8" id="2GP-EA-Beh"/>
+                    <constraint firstAttribute="bottom" secondItem="GtA-rh-H7M" secondAttribute="bottom" constant="8" id="6pS-w7-t7Z"/>
+                    <constraint firstItem="GtA-rh-H7M" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="A7Q-Qh-I4J"/>
+                    <constraint firstItem="GtA-rh-H7M" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="JhF-hp-7vk"/>
+                    <constraint firstItem="SMy-ZH-j1p" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Kj4-2G-QMG"/>
+                    <constraint firstItem="SMy-ZH-j1p" firstAttribute="width" secondItem="GtA-rh-H7M" secondAttribute="width" id="b39-5Y-Gfz"/>
+                    <constraint firstAttribute="trailing" secondItem="SMy-ZH-j1p" secondAttribute="trailing" constant="8" id="xMY-Zo-lbV"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="nameLabel" destination="GtA-rh-H7M" id="NP4-sL-Cn3"/>
+                <outlet property="valueLabel" destination="SMy-ZH-j1p" id="g8T-80-0ao"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

@@ -7,9 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "DetailsViewController.h"
-#import "DetailCollectionViewLayout.h"
-#import "CollectionViewController.h"
+#import "DetailsTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -23,15 +21,11 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    DetailCollectionViewLayout *detailCollectionViewLayout = [[DetailCollectionViewLayout alloc] init];
+    DetailsTableViewController *detailVC = [[DetailsTableViewController alloc] init];
     
-    DetailsViewController *detailVC = [[DetailsViewController alloc] init];
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:detailVC];
     
-    CollectionViewController *collectionVC = [[CollectionViewController alloc] initWithCollectionViewLayout:detailCollectionViewLayout];
-    
-    detailVC.collectionVC = collectionVC;
-    
-    self.window.rootViewController = detailVC;
+    self.window.rootViewController = nvc;
     
     [self.window makeKeyAndVisible];
     
