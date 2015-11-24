@@ -11,5 +11,8 @@
 @interface LogCategory : NSObject
 
 @property (nonatomic, strong) NSMutableArray *entries;
+@property (nonatomic, strong) NSString *name;
+
+//+(LogCategory *) getMockData;
 
 @end

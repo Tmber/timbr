@@ -7,7 +7,17 @@
 //
 
 #import "LogCategory.h"
+#import "Entry.h"
 
 @implementation LogCategory
+
+//+(LogCategory *) getMockData{
+//    LogCategory *log = [[LogCategory alloc] init];
+//    log.name = @"Car Maintenance";
+//    Entry *entry = [[Entry alloc] init];
+//    entry = [Entry getMockArray];
+//    log.entries = @[entry];
+//    return log;
+//}
 
 @end

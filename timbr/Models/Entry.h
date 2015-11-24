@@ -10,8 +10,8 @@
 
 @interface Entry : NSObject
 
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSNumber *value;
-@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) NSMutableArray *fields;
+
+//+(Entry *) getMockArray;
 
 @end

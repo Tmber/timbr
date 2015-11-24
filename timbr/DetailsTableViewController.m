@@ -131,10 +131,10 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return @"Miles over Gas Price";
+        return @"Gas Price over Miles";
     }
     else {
-        return [NSString stringWithFormat:@"Day %ld", (long)section];
+        return [NSString stringWithFormat:@"Entry #%ld", (long)section];
     }
 }
 
