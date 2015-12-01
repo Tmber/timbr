@@ -17,5 +17,9 @@
 
 +(Field *) getMockField1;
 +(Field *) getMockField2;
++(Field *) getMockFielda;
++(Field *) getMockFieldb;
++(Field *) getMockField1:(double)num;
++(Field *) getMockField2:(double)num;
 
 @end

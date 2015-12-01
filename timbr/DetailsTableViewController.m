@@ -11,8 +11,11 @@
 #import "PNChart.h"
 #import "ChartTableViewCell.h"
 #import "LogCategory.h"
+#import "Entry.h"
+#import "Field.h"
 @interface DetailsTableViewController ()
 @property NSArray *data;
+@property LogCategory *log;
 @end
 
 @implementation DetailsTableViewController
@@ -83,7 +86,7 @@
                   ];
     
     LogCategory *mockLog = [LogCategory getMockLog];
-    NSLog(@"%@", mockLog);
+    self.log = mockLog;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -104,8 +107,8 @@
         return 1;
     }
     else {
-        NSArray *dataInSection = [self.data objectAtIndex:section - 1];
-        return dataInSection.count;
+        Entry *tree = [self.log.entries objectAtIndex:(section - 1)];
+        return tree.fields.count;
     }
 }
 
@@ -118,17 +121,17 @@
     }
     else {
         DetailsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"DetailsTableViewCell"];
-        NSArray *dataInSection = [self.data objectAtIndex:indexPath.section - 1];
-        NSDictionary *dataForRow = [dataInSection objectAtIndex:indexPath.row];
-        cell.nameLabel.text = [dataForRow objectForKey:@"name"];
-        cell.valueLabel.text = [NSString stringWithFormat:@"%@",  [dataForRow objectForKey:@"value"]];
+        Entry *tree = [self.log.entries objectAtIndex:(indexPath.section - 1)];
+        Field *field = [tree.fields objectAtIndex:indexPath.row];
+        cell.nameLabel.text = field.name;
+        cell.valueLabel.text = [NSString stringWithFormat:@"%@", field.numberValue];
         return cell;
     }
 }
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.data.count + 1;
+    return self.log.entries.count + 1;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{

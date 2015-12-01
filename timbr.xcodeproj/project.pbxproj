@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7A23FF141C03DB6C009002B8 /* ChartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A23FF121C03DB6C009002B8 /* ChartTableViewCell.m */; };
 		7A23FF151C03DB6C009002B8 /* ChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A23FF131C03DB6C009002B8 /* ChartTableViewCell.xib */; };
+		7A74CE3D1C0D0AAA0080D4AA /* Field.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A74CE3C1C0D0AAA0080D4AA /* Field.m */; };
 		7A8582B11BFE797A001D96F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8582B01BFE797A001D96F5 /* main.m */; };
 		7A8582B41BFE797A001D96F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8582B31BFE797A001D96F5 /* AppDelegate.m */; };
 		7A8582B71BFE797A001D96F5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8582B61BFE797A001D96F5 /* ViewController.m */; };
@@ -31,6 +32,8 @@
 		7A23FF111C03DB6C009002B8 /* ChartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartTableViewCell.h; sourceTree = "<group>"; };
 		7A23FF121C03DB6C009002B8 /* ChartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartTableViewCell.m; sourceTree = "<group>"; };
 		7A23FF131C03DB6C009002B8 /* ChartTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartTableViewCell.xib; sourceTree = "<group>"; };
+		7A74CE3B1C0D0AAA0080D4AA /* Field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Field.h; path = Models/Field.h; sourceTree = "<group>"; };
+		7A74CE3C1C0D0AAA0080D4AA /* Field.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Field.m; path = Models/Field.m; sourceTree = "<group>"; };
 		7A8582AC1BFE797A001D96F5 /* timbr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timbr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A8582B01BFE797A001D96F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7A8582B21BFE797A001D96F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -125,6 +128,8 @@
 		7A8582F41BFED16D001D96F5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7A74CE3B1C0D0AAA0080D4AA /* Field.h */,
+				7A74CE3C1C0D0AAA0080D4AA /* Field.m */,
 				7A8582F51BFED7FE001D96F5 /* Entry.h */,
 				7A8582F61BFED7FE001D96F5 /* Entry.m */,
 				7A8582F81BFEDA9C001D96F5 /* LogCategory.h */,
@@ -293,6 +298,7 @@
 				7A8582FA1BFEDA9C001D96F5 /* LogCategory.m in Sources */,
 				7A8582F71BFED7FE001D96F5 /* Entry.m in Sources */,
 				7A23FF141C03DB6C009002B8 /* ChartTableViewCell.m in Sources */,
+				7A74CE3D1C0D0AAA0080D4AA /* Field.m in Sources */,
 				7A85831B1C004AC5001D96F5 /* DetailsTableViewController.m in Sources */,
 				7A8582B71BFE797A001D96F5 /* ViewController.m in Sources */,
 				7A8582B41BFE797A001D96F5 /* AppDelegate.m in Sources */,
