@@ -14,6 +14,8 @@
 - (void)awakeFromNib {
     // Initialization code
     
+    self.log = [LogCategory getMockLog];
+    
     self.data = @[
                   @[
                       @{@"name": @"Miles",
@@ -74,23 +76,22 @@
                   ];
     NSMutableArray *xLabels = [[NSMutableArray alloc] init];
     
-    for (NSArray *element in _data) {
-        NSDictionary *dict = [element objectAtIndex:0];
-        [xLabels addObject: [NSString stringWithFormat:@"%@", [dict objectForKey:@"value"]]];
+    for (int i = 0; i < self.log.entries.count; i++) {
+        [xLabels addObject: [NSString stringWithFormat:@"%d", i + 1]];
     }
     
     NSMutableArray *yLabels1 = [[NSMutableArray alloc] init];
     
-    for (NSArray *element in _data) {
-        NSDictionary *dict = [element objectAtIndex:1];
-        [yLabels1 addObject:[dict objectForKey:@"value"]];
+    for (Entry *tree in self.log.entries) {
+        Field *field = [tree.fields objectAtIndex:0];
+        [yLabels1 addObject: [NSString stringWithFormat:@"%@", field.numberValue]];
     }
     
     NSMutableArray *yLabels2 = [[NSMutableArray alloc] init];
     
-    for (NSArray *element in _data) {
-        NSDictionary *dict = [element objectAtIndex:2];
-        [yLabels2 addObject:[dict objectForKey:@"value"]];
+    for (Entry *tree in self.log.entries) {
+        Field *field = [tree.fields objectAtIndex:1];
+        [yLabels2 addObject: [NSString stringWithFormat:@"%@", field.numberValue]];
     }
     
     
@@ -106,17 +107,17 @@
         CGFloat yValue = [data01Array[index] floatValue];
         return [PNLineChartDataItem dataItemWithY:yValue];
     };
-//    // Line Chart No.2
-//    NSArray * data02Array = yLabels2;
-//    PNLineChartData *data02 = [PNLineChartData new];
-//    data02.color = PNTwitterColor;
-//    data02.itemCount = lineChart.xLabels.count;
-//    data02.getData = ^(NSUInteger index) {
-//        CGFloat yValue = [data02Array[index] floatValue];
-//        return [PNLineChartDataItem dataItemWithY:yValue];
-//    };
+    // Line Chart No.2
+    NSArray * data02Array = yLabels2;
+    PNLineChartData *data02 = [PNLineChartData new];
+    data02.color = PNTwitterColor;
+    data02.itemCount = lineChart.xLabels.count;
+    data02.getData = ^(NSUInteger index) {
+        CGFloat yValue = [data02Array[index] floatValue];
+        return [PNLineChartDataItem dataItemWithY:yValue];
+    };
     
-    lineChart.chartData = @[data01];
+    lineChart.chartData = @[data01, data02];
     [lineChart strokeChart];
     
     [self.subView addSubview:lineChart];
