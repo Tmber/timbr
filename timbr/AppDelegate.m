@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "DetailsTableViewController.h"
+#import "HomeCollectionViewController.h"
+#import "LoginViewController.h"
+#import <Parse/Parse.h>
 
 @interface AppDelegate ()
 
@@ -18,12 +21,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    [Parse setApplicationId:@"9MRxvMKQJ4BBqDImTLB6BK31I5hB9NiejYMZCIIP"
+                  clientKey:@"B9DLF9A4GEeDMR0IA73ZrdQiZJImfMbhlYcXIKit"];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    DetailsTableViewController *detailVC = [[DetailsTableViewController alloc] init];
+//    DetailsTableViewController *detailVC = [[DetailsTableViewController alloc] init];
+    HomeCollectionViewController *hcvc = [[HomeCollectionViewController alloc] init];
+    LoginViewController *lvc = [[LoginViewController alloc] init];
     
-    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:detailVC];
+//    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:detailVC];
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:lvc];
     
     self.window.rootViewController = nvc;
     

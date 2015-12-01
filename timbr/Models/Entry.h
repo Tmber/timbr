@@ -13,5 +13,8 @@
 @property (nonatomic, strong) NSMutableArray *fields;
 
 +(Entry *)getMockEntry1;
++(Entry *)getMockEntry2;
++(Entry *)getMockEntry3;
++(Entry *)getMockEntry4;
 
 @end

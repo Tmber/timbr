@@ -23,6 +23,12 @@
 		7A85831B1C004AC5001D96F5 /* DetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8583191C004AC5001D96F5 /* DetailsTableViewController.m */; };
 		7A85831C1C004AC5001D96F5 /* DetailsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A85831A1C004AC5001D96F5 /* DetailsTableViewController.xib */; };
 		EBE0724F6512330E95F9BEBA /* libPods-timbr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C77725C7DA68250F9E352FFE /* libPods-timbr.a */; };
+		F9AB7E3A1C0D0AA3005BB778 /* Field.m in Sources */ = {isa = PBXBuildFile; fileRef = F9AB7E391C0D0AA3005BB778 /* Field.m */; settings = {ASSET_TAGS = (); }; };
+		F9AB7E481C0E4B95005BB778 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9AB7E471C0E4B95005BB778 /* HomeCollectionViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		F9AB7E4F1C0E4B9E005BB778 /* HomeCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9AB7E491C0E4B9E005BB778 /* HomeCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
+		F9AB7E501C0E4B9E005BB778 /* HomeCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9AB7E4B1C0E4B9E005BB778 /* HomeCollectionViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		F9AB7E511C0E4B9E005BB778 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9AB7E4C1C0E4B9E005BB778 /* LoginViewController.m */; settings = {ASSET_TAGS = (); }; };
+		F9AB7E521C0E4B9E005BB778 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9AB7E4E1C0E4B9E005BB778 /* LoginViewController.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +59,15 @@
 		7A8583191C004AC5001D96F5 /* DetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsTableViewController.m; sourceTree = "<group>"; };
 		7A85831A1C004AC5001D96F5 /* DetailsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsTableViewController.xib; sourceTree = "<group>"; };
 		C77725C7DA68250F9E352FFE /* libPods-timbr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-timbr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9AB7E381C0D0AA3005BB778 /* Field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Field.h; path = Models/Field.h; sourceTree = "<group>"; };
+		F9AB7E391C0D0AA3005BB778 /* Field.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Field.m; path = Models/Field.m; sourceTree = "<group>"; };
+		F9AB7E471C0E4B95005BB778 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		F9AB7E491C0E4B9E005BB778 /* HomeCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionViewController.m; sourceTree = "<group>"; };
+		F9AB7E4A1C0E4B9E005BB778 /* HomeCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCollectionViewController.h; sourceTree = "<group>"; };
+		F9AB7E4B1C0E4B9E005BB778 /* HomeCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCollectionViewController.xib; sourceTree = "<group>"; };
+		F9AB7E4C1C0E4B9E005BB778 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F9AB7E4D1C0E4B9E005BB778 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		F9AB7E4E1C0E4B9E005BB778 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +140,8 @@
 		7A8582F41BFED16D001D96F5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F9AB7E381C0D0AA3005BB778 /* Field.h */,
+				F9AB7E391C0D0AA3005BB778 /* Field.m */,
 				7A8582F51BFED7FE001D96F5 /* Entry.h */,
 				7A8582F61BFED7FE001D96F5 /* Entry.m */,
 				7A8582F81BFEDA9C001D96F5 /* LogCategory.h */,
@@ -136,6 +153,12 @@
 		7A8582FB1BFEDB16001D96F5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F9AB7E491C0E4B9E005BB778 /* HomeCollectionViewController.m */,
+				F9AB7E4A1C0E4B9E005BB778 /* HomeCollectionViewController.h */,
+				F9AB7E4B1C0E4B9E005BB778 /* HomeCollectionViewController.xib */,
+				F9AB7E4C1C0E4B9E005BB778 /* LoginViewController.m */,
+				F9AB7E4D1C0E4B9E005BB778 /* LoginViewController.h */,
+				F9AB7E4E1C0E4B9E005BB778 /* LoginViewController.xib */,
 				7A8583181C004AC5001D96F5 /* DetailsTableViewController.h */,
 				7A8583191C004AC5001D96F5 /* DetailsTableViewController.m */,
 				7A85831A1C004AC5001D96F5 /* DetailsTableViewController.xib */,
@@ -152,6 +175,7 @@
 				7A23FF111C03DB6C009002B8 /* ChartTableViewCell.h */,
 				7A23FF121C03DB6C009002B8 /* ChartTableViewCell.m */,
 				7A23FF131C03DB6C009002B8 /* ChartTableViewCell.xib */,
+				F9AB7E471C0E4B95005BB778 /* HomeCollectionViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -227,10 +251,13 @@
 			files = (
 				7A85831C1C004AC5001D96F5 /* DetailsTableViewController.xib in Resources */,
 				7A8582C21BFE797A001D96F5 /* LaunchScreen.storyboard in Resources */,
+				F9AB7E501C0E4B9E005BB778 /* HomeCollectionViewController.xib in Resources */,
 				7A8582BF1BFE797A001D96F5 /* Assets.xcassets in Resources */,
 				7A8583121C00247C001D96F5 /* DetailsTableViewCell.xib in Resources */,
+				F9AB7E481C0E4B95005BB778 /* HomeCollectionViewCell.xib in Resources */,
 				7A23FF151C03DB6C009002B8 /* ChartTableViewCell.xib in Resources */,
 				7A8582BA1BFE797A001D96F5 /* Main.storyboard in Resources */,
+				F9AB7E521C0E4B9E005BB778 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +321,10 @@
 				7A8582F71BFED7FE001D96F5 /* Entry.m in Sources */,
 				7A23FF141C03DB6C009002B8 /* ChartTableViewCell.m in Sources */,
 				7A85831B1C004AC5001D96F5 /* DetailsTableViewController.m in Sources */,
+				F9AB7E3A1C0D0AA3005BB778 /* Field.m in Sources */,
+				F9AB7E4F1C0E4B9E005BB778 /* HomeCollectionViewController.m in Sources */,
 				7A8582B71BFE797A001D96F5 /* ViewController.m in Sources */,
+				F9AB7E511C0E4B9E005BB778 /* LoginViewController.m in Sources */,
 				7A8582B41BFE797A001D96F5 /* AppDelegate.m in Sources */,
 				7A8582B11BFE797A001D96F5 /* main.m in Sources */,
 				7A8583111C00247C001D96F5 /* DetailsTableViewCell.m in Sources */,
@@ -359,7 +389,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -397,7 +427,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -410,6 +440,7 @@
 			baseConfigurationReference = 56DEC1086A3CBCFEBB2C3DAA /* Pods-timbr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = timbr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.timbr.timbr;
@@ -422,6 +453,7 @@
 			baseConfigurationReference = 04569B1364EABA1A43D9F815 /* Pods-timbr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = timbr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.timbr.timbr;

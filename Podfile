@@ -6,4 +6,5 @@
 target 'timbr' do
   pod 'PNChart'
   pod 'JBChartView'
+  pod 'Parse'
 end

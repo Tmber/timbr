@@ -15,8 +15,10 @@
     LogCategory *log = [[LogCategory alloc] init];
     log.name = @"Car Maintenance";
     log.entries = [NSMutableArray array];
-    [log.entries addObject:@[[Entry getMockEntry1]]];
-    [log.entries addObject:@[[Entry getMockEntry1]]];
+    [log.entries addObject:[Entry getMockEntry1]];
+    [log.entries addObject:[Entry getMockEntry2]];
+    [log.entries addObject:[Entry getMockEntry3]];
+    [log.entries addObject:[Entry getMockEntry4]];
     return log;
 }
 

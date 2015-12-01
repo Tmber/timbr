@@ -14,9 +14,28 @@
 +(Entry *)getMockEntry1{
     Entry *entry = [[Entry alloc] init];
     entry.fields = [[NSMutableArray alloc] init];
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    [array addObjectsFromArray:@[[Field getMockField1], [Field getMockField2], [Field getMockField1], [Field getMockField2], [Field getMockField1], [Field getMockField2]]];
-    [entry.fields addObject:array];
+    [entry.fields addObjectsFromArray:@[[Field getMockField1:0.3], [Field getMockField2:0.3]]];
+    return entry;
+}
+
++(Entry *)getMockEntry2{
+    Entry *entry = [[Entry alloc] init];
+    entry.fields = [[NSMutableArray alloc] init];
+    [entry.fields addObjectsFromArray:@[[Field getMockField1:0.4], [Field getMockField2:0.7]]];
+    return entry;
+}
+
++(Entry *)getMockEntry3{
+    Entry *entry = [[Entry alloc] init];
+    entry.fields = [[NSMutableArray alloc] init];
+    [entry.fields addObjectsFromArray:@[[Field getMockField1:0.1], [Field getMockField2:0.5]]];
+    return entry;
+}
+
++(Entry *)getMockEntry4{
+    Entry *entry = [[Entry alloc] init];
+    entry.fields = [[NSMutableArray alloc] init];
+    [entry.fields addObjectsFromArray:@[[Field getMockField1:0.2], [Field getMockField2:0.8]]];
     return entry;
 }
 

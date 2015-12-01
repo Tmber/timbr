@@ -1,15 +1,21 @@
 PODS:
+  - Bolts/Tasks (1.5.0)
   - JBChartView (2.8.16)
+  - Parse (1.10.0):
+    - Bolts/Tasks (~> 1.5)
   - PNChart (0.8.7):
     - UICountingLabel (~> 1.2.0)
   - UICountingLabel (1.2.0)
 
 DEPENDENCIES:
   - JBChartView
+  - Parse
   - PNChart
 
 SPEC CHECKSUMS:
+  Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
   JBChartView: 8e65b7fbb4e7f1f2c0197575734fce4af1c19e17
+  Parse: 90b2544822200f84b18bfacc4e8b0a3a6c3584a2
   PNChart: c1755716bbd45386d2035b2bf2ce73e6d3f8cb22
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
 
