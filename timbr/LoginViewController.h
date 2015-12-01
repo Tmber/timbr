@@ -1,5 +1,5 @@
 //
-//  HomeCollectionViewController.h
+//  LoginViewController.h
 //  collection-test
 //
 //  Created by Sean Kemper on 11/25/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeCollectionViewController : UIViewController
+@interface LoginViewController : UIViewController
 
 @end

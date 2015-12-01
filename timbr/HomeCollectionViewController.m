@@ -1,46 +1,75 @@
 //
 //  HomeCollectionViewController.m
-//  timbr
+//  collection-test
 //
 //  Created by Sean Kemper on 11/25/15.
-//  Copyright © 2015 Tmber. All rights reserved.
+//  Copyright © 2015 Sean Kemper. All rights reserved.
 //
 
 #import "HomeCollectionViewController.h"
-#import "HomeCollectionViewCell.h"
+#import "DetailsTableViewController.h"
 
-@interface HomeCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (strong, nonatomic) NSArray *dataArray;
-
+@interface HomeCollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) NSArray *dataArray;
 @end
 
 @implementation HomeCollectionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSMutableArray *firstSection = [[NSMutableArray alloc] init]; NSMutableArray *secondSection = [[NSMutableArray alloc] init];
+    // Do any additional setup after loading the view from its nib.
+    NSMutableArray *firstSection = [[NSMutableArray alloc] init];
+    NSMutableArray *secondSection = [[NSMutableArray alloc] init];
     for (int i=0; i<50; i++) {
         [firstSection addObject:[NSString stringWithFormat:@"Cell %d", i]];
         [secondSection addObject:[NSString stringWithFormat:@"item %d", i]];
     }
     self.dataArray = [[NSArray alloc] initWithObjects:firstSection, secondSection, nil];
-    [self.collectionView registerNib:[UINib nibWithNibName:@"HomeCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"homeCell"];
+    UINib *cellNib = [UINib nibWithNibName:@"HomeCollectionViewCell" bundle:nil];
+    [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"homeCell"];
+    
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setItemSize:CGSizeMake(125, 125)];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    
+    [self.collectionView setCollectionViewLayout:flowLayout];
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSMutableArray *data = [self.dataArray objectAtIndex:indexPath.section];
+    
+    NSString *cellData = [data objectAtIndex:indexPath.row];
+    
+    static NSString *cellIdentifier = @"homeCell";
+    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    UILabel *titleLabel = (UILabel *)[cell viewWithTag:100];
+    
+    [titleLabel setText:cellData];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap:)];
+    [cell addGestureRecognizer:tap];
+    
+    return cell;
+    
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return [self.dataArray count];
 }
 
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    HomeCollectionViewCell *hcvc = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"homeCell" forIndexPath:indexPath];
-    
-    return hcvc;
-}
-
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     NSMutableArray *sectionArray = [self.dataArray objectAtIndex:section];
-    return [sectionArray count]; }
+    return [sectionArray count];
+}
+
+- (IBAction)onTap:(id)sender {
+    NSLog(@"on tap");
+    [self.navigationController pushViewController:[[DetailsTableViewController alloc] init] animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -6,7 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeCollectionViewController">
             <connections>
-                <outlet property="collectionView" destination="uzS-B1-dMj" id="rZS-L3-QW8"/>
+                <outlet property="collectionView" destination="zu2-LL-Dqn" id="FYZ-g4-85w"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -14,22 +15,26 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="uzS-B1-dMj">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZaV-hL-SjR">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="zu2-LL-Dqn">
+                    <rect key="frame" x="8" y="8" width="584" height="584"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Yn-Am-3ZM">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="gl1-2O-TBy"/>
+                        <outlet property="delegate" destination="-1" id="XA0-C0-oSP"/>
+                    </connections>
                 </collectionView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="uzS-B1-dMj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="NaN-ey-n4M"/>
-                <constraint firstAttribute="trailing" secondItem="uzS-B1-dMj" secondAttribute="trailing" id="Nj9-ml-Ui9"/>
-                <constraint firstItem="uzS-B1-dMj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="RIl-Z8-GyG"/>
-                <constraint firstAttribute="bottom" secondItem="uzS-B1-dMj" secondAttribute="bottom" id="kg7-QV-UlJ"/>
+                <constraint firstItem="zu2-LL-Dqn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="KSr-D5-6cf"/>
+                <constraint firstAttribute="trailing" secondItem="zu2-LL-Dqn" secondAttribute="trailing" constant="8" id="ct0-pR-XTL"/>
+                <constraint firstAttribute="bottom" secondItem="zu2-LL-Dqn" secondAttribute="bottom" constant="8" id="nRQ-4g-XkU"/>
+                <constraint firstItem="zu2-LL-Dqn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="yRD-6g-Dc4"/>
             </constraints>
         </view>
     </objects>
