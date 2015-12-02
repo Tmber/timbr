@@ -24,69 +24,12 @@
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"DetailsTableViewCell" bundle:nil] forCellReuseIdentifier:@"DetailsTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"ChartTableViewCell" bundle:nil] forCellReuseIdentifier:@"ChartTableViewCell"];
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.title = @"Car Maintenance";
-    self.data = @[
-                  @[
-                      @{@"name": @"Miles",
-                        @"value": @30,
-                        @"dataType": [NSNumber class]
-                        },
-                      @{@"name": @"Gas Price",
-                        @"value": @3.29,
-                        @"dataType": [NSNumber class]
-                        },
-                      @{@"name": @"Mileage",
-                        @"value": @50000,
-                        @"dataType": [NSNumber class]
-                        }
-                      ],
-                  @[
-                      @{@"name": @"Miles",
-                        @"value": @31,
-                        @"dataType": [NSNumber class]
-                        },
-                      @{@"name": @"Gas Price",
-                        @"value": @3.15,
-                        @"dataType": [NSNumber class]
-                        },
-                      @{@"name": @"Mileage",
-                        @"value": @50050,
-                        @"dataType": [NSNumber class]
-                        }
-                      ],
-                  @[
-                      @{@"name": @"Miles",
-                        @"value": @41,
-                        @"dataType": [NSNumber class]
-                        },
-                      @{@"name": @"Gas Price",
-                        @"value": @2.00,
-                        @"dataType": [NSNumber class]
-                        },
-                      @{@"name": @"Mileage",
-                        @"value": @50100,
-                        @"dataType": [NSNumber class]
-                        }
-                      ],
-                  @[
-                      @{@"name": @"Miles",
-                        @"value": @10,
-                        @"dataType": [NSNumber class]
-                        },
-                      @{@"name": @"Gas Price",
-                        @"value": @1.50,
-                        @"dataType": [NSNumber class]
-                        },
-                      @{@"name": @"Mileage",
-                        @"value": @50150,
-                        @"dataType": [NSNumber class]
-                        }
-                      ],
-                  ];
     
     LogCategory *mockLog = [LogCategory getMockLog];
     self.log = mockLog;
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.title = self.log.name;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -136,7 +79,7 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return @"Gas Price over Miles";
+        return @"Gas Price, Miles over Time";
     }
     else {
         return [NSString stringWithFormat:@"Entry #%ld", (long)section];
