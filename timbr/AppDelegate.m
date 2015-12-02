@@ -25,7 +25,7 @@
                   clientKey:@"B9DLF9A4GEeDMR0IA73ZrdQiZJImfMbhlYcXIKit"];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-//    DetailsTableViewController *detailVC = [[DetailsTableViewController alloc] init];
+    DetailsTableViewController *detailVC = [[DetailsTableViewController alloc] init];
     HomeCollectionViewController *hcvc = [[HomeCollectionViewController alloc] init];
     LoginViewController *lvc = [[LoginViewController alloc] init];
     

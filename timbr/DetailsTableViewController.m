@@ -67,7 +67,10 @@
         Entry *tree = [self.log.entries objectAtIndex:(indexPath.section - 1)];
         Field *field = [tree.fields objectAtIndex:indexPath.row];
         cell.nameLabel.text = field.name;
-        cell.valueLabel.text = [NSString stringWithFormat:@"%@", field.numberValue];
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setMaximumFractionDigits:2];
+        [formatter setMinimumFractionDigits:2];
+        cell.valueLabel.text = [formatter stringFromNumber:field.numberValue];
         return cell;
     }
 }
