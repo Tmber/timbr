@@ -15,5 +15,5 @@
 @property (weak, nonatomic) IBOutlet UIView *subView;
 @property NSArray* data;
 @property LogCategory* log;
-
+@property NSInteger maxFieldCount;
 @end
