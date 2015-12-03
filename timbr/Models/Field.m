@@ -8,6 +8,10 @@
 
 #import "Field.h"
 
+NSString *const FieldTypeNumber = @"Number";
+NSString *const FieldTypeDecimal = @"Decimal";
+NSString *const FieldTypeCurrency = @"Currency";
+
 @implementation Field
 
 +(Field *) getMockFielda{
