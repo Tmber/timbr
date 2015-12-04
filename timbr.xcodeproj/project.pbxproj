@@ -27,6 +27,7 @@
 		F6967C0B1C10068800ED1765 /* EntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6967C091C10068800ED1765 /* EntryViewController.xib */; };
 		F6967C161C1165B100ED1765 /* FieldDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6967C141C1165B100ED1765 /* FieldDataTableViewCell.m */; };
 		F6967C171C1165B100ED1765 /* FieldDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6967C151C1165B100ED1765 /* FieldDataTableViewCell.xib */; };
+		F6967C1A1C117D6A00ED1765 /* LogCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = F6967C191C117D6A00ED1765 /* LogCollection.m */; };
 		F6DC76AA1C0EB81400DBD2BD /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DC76A81C0EB81400DBD2BD /* CategoryViewController.m */; };
 		F6DC76AB1C0EB81400DBD2BD /* CategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6DC76A91C0EB81400DBD2BD /* CategoryViewController.xib */; };
 		F6DC76AF1C0EE52900DBD2BD /* FieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DC76AD1C0EE52900DBD2BD /* FieldViewController.m */; };
@@ -75,6 +76,8 @@
 		F6967C131C1165B100ED1765 /* FieldDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldDataTableViewCell.h; sourceTree = "<group>"; };
 		F6967C141C1165B100ED1765 /* FieldDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FieldDataTableViewCell.m; sourceTree = "<group>"; };
 		F6967C151C1165B100ED1765 /* FieldDataTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FieldDataTableViewCell.xib; sourceTree = "<group>"; };
+		F6967C181C117D6A00ED1765 /* LogCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogCollection.h; sourceTree = "<group>"; };
+		F6967C191C117D6A00ED1765 /* LogCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogCollection.m; sourceTree = "<group>"; };
 		F6DC76A71C0EB81400DBD2BD /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryViewController.h; sourceTree = "<group>"; };
 		F6DC76A81C0EB81400DBD2BD /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryViewController.m; sourceTree = "<group>"; };
 		F6DC76A91C0EB81400DBD2BD /* CategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryViewController.xib; sourceTree = "<group>"; };
@@ -171,6 +174,8 @@
 				7A8582F61BFED7FE001D96F5 /* Entry.m */,
 				7A8582F81BFEDA9C001D96F5 /* LogCategory.h */,
 				7A8582F91BFEDA9C001D96F5 /* LogCategory.m */,
+				F6967C181C117D6A00ED1765 /* LogCollection.h */,
+				F6967C191C117D6A00ED1765 /* LogCollection.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -365,6 +370,7 @@
 				F6967C161C1165B100ED1765 /* FieldDataTableViewCell.m in Sources */,
 				F6967C0A1C10068800ED1765 /* EntryViewController.m in Sources */,
 				F6DC76AF1C0EE52900DBD2BD /* FieldViewController.m in Sources */,
+				F6967C1A1C117D6A00ED1765 /* LogCollection.m in Sources */,
 				7A8582FA1BFEDA9C001D96F5 /* LogCategory.m in Sources */,
 				7A8582F71BFED7FE001D96F5 /* Entry.m in Sources */,
 				7A23FF141C03DB6C009002B8 /* ChartTableViewCell.m in Sources */,

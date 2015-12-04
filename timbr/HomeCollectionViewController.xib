@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeCollectionViewController">
@@ -28,12 +28,22 @@
                         <outlet property="delegate" destination="-1" id="XA0-C0-oSP"/>
                     </connections>
                 </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2jz-uC-Maq">
+                    <rect key="frame" x="238" y="547" width="124" height="30"/>
+                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Add Log Category"/>
+                    <connections>
+                        <action selector="onAddLogCategoryPressed:" destination="-1" eventType="touchUpInside" id="93S-Ry-kc5"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="zu2-LL-Dqn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="KSr-D5-6cf"/>
+                <constraint firstAttribute="bottom" secondItem="2jz-uC-Maq" secondAttribute="bottom" constant="23" id="T5l-GM-hFN"/>
                 <constraint firstAttribute="trailing" secondItem="zu2-LL-Dqn" secondAttribute="trailing" constant="8" id="ct0-pR-XTL"/>
                 <constraint firstAttribute="bottom" secondItem="zu2-LL-Dqn" secondAttribute="bottom" constant="8" id="nRQ-4g-XkU"/>
+                <constraint firstItem="2jz-uC-Maq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xkj-lc-cJ0"/>
                 <constraint firstItem="zu2-LL-Dqn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="yRD-6g-Dc4"/>
             </constraints>
         </view>

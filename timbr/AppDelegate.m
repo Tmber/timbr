@@ -29,16 +29,17 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
 //    DetailsTableViewController *detailVC = [[DetailsTableViewController alloc] init];
-//    HomeCollectionViewController *hcvc = [[HomeCollectionViewController alloc] init];
+    HomeCollectionViewController *hcvc = [[HomeCollectionViewController alloc] init];
 //    LoginViewController *lvc = [[LoginViewController alloc] init];
 //    CategoryViewController *categoryViewController = [[CategoryViewController alloc] init];
-    EntryViewController *entryViewController = [[EntryViewController alloc] init];
-    entryViewController.logCategory = [LogCategory getMockLog];
+//    EntryViewController *entryViewController = [[EntryViewController alloc] init];
+//    entryViewController.logCategory = [LogCategory getMockLog];
     
 //    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:detailVC];
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:hcvc];
 //    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:lvc];
 //    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:categoryViewController];
-    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:entryViewController];
+//    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:entryViewController];
     
     self.window.rootViewController = nvc;
     

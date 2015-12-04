@@ -9,6 +9,9 @@
 #import "CategoryViewController.h"
 #import "FieldViewController.h"
 #import "FieldsTableViewCell.h"
+#import "LogCollection.h"
+#import "LogCategory.h"
+#import "Entry.h"
 
 @interface CategoryViewController () <UITableViewDataSource, FieldsTableViewCellDelegate, FieldViewControllerDelegate>
 
@@ -79,13 +82,18 @@
 
 #pragma mark - private methods
 - (void)onCancelButtonPress {
-    NSLog(@"Cancel button pressed");
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)onSaveButtonPress {
-    NSLog(@"Save button pressed");
-    // TODO Save name
-    // TODO Save fields
+    LogCategory *logCategory = [[LogCategory alloc] init];
+    
+    logCategory.name = self.categoryNameTextBox.text;
+    logCategory.schemaEntry = [[Entry alloc] init];
+    logCategory.schemaEntry.fields = self.fields;
+    
+    [[LogCollection sharedInstance].logCategories addObject:logCategory];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)fieldsTableViewCellDeletePressed:(FieldsTableViewCell *)cell {
