@@ -14,11 +14,24 @@ NSString *const FieldTypeCurrency = @"Currency";
 
 @implementation Field
 
+-(UIKeyboardType) getKeyboardType {
+    if (self.dataType == FieldTypeNumber) {
+        return UIKeyboardTypeNumberPad;
+    } else if (self.dataType == FieldTypeDecimal) {
+        return UIKeyboardTypeDecimalPad;
+    } else if (self.dataType == FieldTypeCurrency) {
+        return UIKeyboardTypeDecimalPad;
+    } else {
+        return UIKeyboardTypeDefault;
+    }
+}
+
 +(Field *) getMockFielda{
     Field *fld = [[Field alloc] init];
     srand48(time(0));
     double r = drand48();
     fld.name = @"Miles";
+    fld.dataType = FieldTypeDecimal;
     fld.numberValue = @(r*100);
     return fld;
 }
@@ -28,6 +41,7 @@ NSString *const FieldTypeCurrency = @"Currency";
     srand48(time(0));
     double r = drand48();
     fld.name = @"Miles";
+    fld.dataType = FieldTypeDecimal;
     fld.numberValue = @(r*100);
     return fld;
 }
@@ -37,6 +51,7 @@ NSString *const FieldTypeCurrency = @"Currency";
     srand48(time(0));
     double r = drand48();
     fld.name = @"Miles";
+    fld.dataType = FieldTypeDecimal;
     fld.numberValue = @((r + num) * 100);
     return fld;
 }
@@ -46,6 +61,7 @@ NSString *const FieldTypeCurrency = @"Currency";
     srand48(time(0));
     double r = drand48();
     fld.name = @"Gas Price";
+    fld.dataType = FieldTypeCurrency;
     fld.numberValue = @(2 + r);
     return fld;
 }
@@ -55,6 +71,7 @@ NSString *const FieldTypeCurrency = @"Currency";
     srand48(time(0));
     double r = drand48();
     fld.name = @"Gas Price";
+    fld.dataType = FieldTypeCurrency;
     fld.numberValue = @(2 + r);
     return fld;
 }
@@ -64,6 +81,7 @@ NSString *const FieldTypeCurrency = @"Currency";
     srand48(time(0));
     double r = drand48();
     fld.name = @"Gas Price";
+    fld.dataType = FieldTypeCurrency;
     fld.numberValue = @(2 + (r + num));
     return fld;
 }

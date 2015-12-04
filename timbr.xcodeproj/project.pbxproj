@@ -23,6 +23,10 @@
 		7A85831B1C004AC5001D96F5 /* DetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8583191C004AC5001D96F5 /* DetailsTableViewController.m */; };
 		7A85831C1C004AC5001D96F5 /* DetailsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A85831A1C004AC5001D96F5 /* DetailsTableViewController.xib */; };
 		EBE0724F6512330E95F9BEBA /* libPods-timbr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C77725C7DA68250F9E352FFE /* libPods-timbr.a */; };
+		F6967C0A1C10068800ED1765 /* EntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6967C081C10068800ED1765 /* EntryViewController.m */; };
+		F6967C0B1C10068800ED1765 /* EntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6967C091C10068800ED1765 /* EntryViewController.xib */; };
+		F6967C161C1165B100ED1765 /* FieldDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6967C141C1165B100ED1765 /* FieldDataTableViewCell.m */; };
+		F6967C171C1165B100ED1765 /* FieldDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6967C151C1165B100ED1765 /* FieldDataTableViewCell.xib */; };
 		F6DC76AA1C0EB81400DBD2BD /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DC76A81C0EB81400DBD2BD /* CategoryViewController.m */; };
 		F6DC76AB1C0EB81400DBD2BD /* CategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6DC76A91C0EB81400DBD2BD /* CategoryViewController.xib */; };
 		F6DC76AF1C0EE52900DBD2BD /* FieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DC76AD1C0EE52900DBD2BD /* FieldViewController.m */; };
@@ -65,6 +69,12 @@
 		7A8583191C004AC5001D96F5 /* DetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsTableViewController.m; sourceTree = "<group>"; };
 		7A85831A1C004AC5001D96F5 /* DetailsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsTableViewController.xib; sourceTree = "<group>"; };
 		C77725C7DA68250F9E352FFE /* libPods-timbr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-timbr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6967C071C10068800ED1765 /* EntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryViewController.h; sourceTree = "<group>"; };
+		F6967C081C10068800ED1765 /* EntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryViewController.m; sourceTree = "<group>"; };
+		F6967C091C10068800ED1765 /* EntryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntryViewController.xib; sourceTree = "<group>"; };
+		F6967C131C1165B100ED1765 /* FieldDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldDataTableViewCell.h; sourceTree = "<group>"; };
+		F6967C141C1165B100ED1765 /* FieldDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FieldDataTableViewCell.m; sourceTree = "<group>"; };
+		F6967C151C1165B100ED1765 /* FieldDataTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FieldDataTableViewCell.xib; sourceTree = "<group>"; };
 		F6DC76A71C0EB81400DBD2BD /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryViewController.h; sourceTree = "<group>"; };
 		F6DC76A81C0EB81400DBD2BD /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryViewController.m; sourceTree = "<group>"; };
 		F6DC76A91C0EB81400DBD2BD /* CategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryViewController.xib; sourceTree = "<group>"; };
@@ -183,6 +193,9 @@
 				F6DC76AC1C0EE52900DBD2BD /* FieldViewController.h */,
 				F6DC76AD1C0EE52900DBD2BD /* FieldViewController.m */,
 				F6DC76AE1C0EE52900DBD2BD /* FieldViewController.xib */,
+				F6967C071C10068800ED1765 /* EntryViewController.h */,
+				F6967C081C10068800ED1765 /* EntryViewController.m */,
+				F6967C091C10068800ED1765 /* EntryViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -200,6 +213,9 @@
 				F6DC76B11C0FAA5400DBD2BD /* FieldsTableViewCell.h */,
 				F6DC76B21C0FAA5400DBD2BD /* FieldsTableViewCell.m */,
 				F6DC76B31C0FAA5400DBD2BD /* FieldsTableViewCell.xib */,
+				F6967C131C1165B100ED1765 /* FieldDataTableViewCell.h */,
+				F6967C141C1165B100ED1765 /* FieldDataTableViewCell.m */,
+				F6967C151C1165B100ED1765 /* FieldDataTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -273,6 +289,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6967C171C1165B100ED1765 /* FieldDataTableViewCell.xib in Resources */,
 				7A85831C1C004AC5001D96F5 /* DetailsTableViewController.xib in Resources */,
 				7A8582C21BFE797A001D96F5 /* LaunchScreen.storyboard in Resources */,
 				F9AB7E501C0E4B9E005BB778 /* HomeCollectionViewController.xib in Resources */,
@@ -283,6 +300,7 @@
 				F9AB7E481C0E4B95005BB778 /* HomeCollectionViewCell.xib in Resources */,
 				7A23FF151C03DB6C009002B8 /* ChartTableViewCell.xib in Resources */,
 				7A8582BA1BFE797A001D96F5 /* Main.storyboard in Resources */,
+				F6967C0B1C10068800ED1765 /* EntryViewController.xib in Resources */,
 				F6DC76AB1C0EB81400DBD2BD /* CategoryViewController.xib in Resources */,
 				F9AB7E521C0E4B9E005BB778 /* LoginViewController.xib in Resources */,
 			);
@@ -344,6 +362,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A8582BD1BFE797A001D96F5 /* timbr.xcdatamodeld in Sources */,
+				F6967C161C1165B100ED1765 /* FieldDataTableViewCell.m in Sources */,
+				F6967C0A1C10068800ED1765 /* EntryViewController.m in Sources */,
 				F6DC76AF1C0EE52900DBD2BD /* FieldViewController.m in Sources */,
 				7A8582FA1BFEDA9C001D96F5 /* LogCategory.m in Sources */,
 				7A8582F71BFED7FE001D96F5 /* Entry.m in Sources */,
