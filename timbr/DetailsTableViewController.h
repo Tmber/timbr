@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LogCategory.h"
 
 @interface DetailsTableViewController : UITableViewController
+
+@property (strong, nonatomic) LogCategory *logCategory;
 
 @end

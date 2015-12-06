@@ -10,12 +10,11 @@
 #import "DetailsTableViewCell.h"
 #import "PNChart.h"
 #import "ChartTableViewCell.h"
-#import "LogCategory.h"
 #import "Entry.h"
 #import "Field.h"
+
 @interface DetailsTableViewController ()
-@property NSArray *data;
-@property LogCategory *log;
+
 @end
 
 @implementation DetailsTableViewController
@@ -25,68 +24,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"DetailsTableViewCell" bundle:nil] forCellReuseIdentifier:@"DetailsTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"ChartTableViewCell" bundle:nil] forCellReuseIdentifier:@"ChartTableViewCell"];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.title = @"Car Maintenance";
-    self.data = @[
-                  @[
-                      @{@"name": @"Miles",
-                        @"value": @30,
-                        @"dataType": [NSNumber class]
-                        },
-                      @{@"name": @"Gas Price",
-                        @"value": @3.29,
-                        @"dataType": [NSNumber class]
-                        },
-                      @{@"name": @"Mileage",
-                        @"value": @50000,
-                        @"dataType": [NSNumber class]
-                        }
-                      ],
-                  @[
-                      @{@"name": @"Miles",
-                        @"value": @31,
-                        @"dataType": [NSNumber class]
-                        },
-                      @{@"name": @"Gas Price",
-                        @"value": @3.15,
-                        @"dataType": [NSNumber class]
-                        },
-                      @{@"name": @"Mileage",
-                        @"value": @50050,
-                        @"dataType": [NSNumber class]
-                        }
-                      ],
-                  @[
-                      @{@"name": @"Miles",
-                        @"value": @41,
-                        @"dataType": [NSNumber class]
-                        },
-                      @{@"name": @"Gas Price",
-                        @"value": @2.00,
-                        @"dataType": [NSNumber class]
-                        },
-                      @{@"name": @"Mileage",
-                        @"value": @50100,
-                        @"dataType": [NSNumber class]
-                        }
-                      ],
-                  @[
-                      @{@"name": @"Miles",
-                        @"value": @10,
-                        @"dataType": [NSNumber class]
-                        },
-                      @{@"name": @"Gas Price",
-                        @"value": @1.50,
-                        @"dataType": [NSNumber class]
-                        },
-                      @{@"name": @"Mileage",
-                        @"value": @50150,
-                        @"dataType": [NSNumber class]
-                        }
-                      ],
-                  ];
-    
-    LogCategory *mockLog = [LogCategory getMockLog];
-    self.log = mockLog;
+    self.title = self.logCategory.name;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -107,7 +45,7 @@
         return 1;
     }
     else {
-        Entry *tree = [self.log.entries objectAtIndex:(section - 1)];
+        Entry *tree = [self.logCategory.entries objectAtIndex:(section - 1)];
         return tree.fields.count;
     }
 }
@@ -121,7 +59,7 @@
     }
     else {
         DetailsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"DetailsTableViewCell"];
-        Entry *tree = [self.log.entries objectAtIndex:(indexPath.section - 1)];
+        Entry *tree = [self.logCategory.entries objectAtIndex:(indexPath.section - 1)];
         Field *field = [tree.fields objectAtIndex:indexPath.row];
         cell.nameLabel.text = field.name;
         cell.valueLabel.text = [NSString stringWithFormat:@"%@", field.numberValue];
@@ -131,7 +69,7 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.log.entries.count + 1;
+    return self.logCategory.entries.count + 1;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{

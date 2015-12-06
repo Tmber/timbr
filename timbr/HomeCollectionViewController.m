@@ -63,11 +63,7 @@
     
     [titleLabel setText:cellData];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap:)];
-    [cell addGestureRecognizer:tap];
-    
     return cell;
-    
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -79,9 +75,17 @@
     return [sectionArray count];
 }
 
-- (IBAction)onTap:(id)sender {
-    NSLog(@"on tap");
-    [self.navigationController pushViewController:[[DetailsTableViewController alloc] init] animated:YES];
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSMutableArray *data = [self.dataArray objectAtIndex:indexPath.section];
+    LogCategory *logCategory = [data objectAtIndex:indexPath.row];
+
+    DetailsTableViewController *detailsTableViewController = [[DetailsTableViewController alloc] init];
+    
+    detailsTableViewController.logCategory = logCategory;
+    
+    // TODO detailsTableViewController.logCategory = figure out from sender
+    [self.navigationController pushViewController:detailsTableViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
