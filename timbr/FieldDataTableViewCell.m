@@ -36,7 +36,9 @@
     _field = field;
     
     self.fieldNameLabel.text = self.field.name;
-    self.fieldValueTextField.text = [NSString stringWithFormat:@"%@", self.field.numberValue];
+    if (self.field.numberValue) {
+        self.fieldValueTextField.text = [NSString stringWithFormat:@"%@", self.field.numberValue];
+    }
     
     [self.fieldValueTextField setKeyboardType:[self.field getKeyboardType]];
 }
