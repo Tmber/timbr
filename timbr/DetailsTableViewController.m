@@ -71,7 +71,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return [self.tableView dequeueReusableCellWithIdentifier:@"ChartTableViewCell"];
+        ChartTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"ChartTableViewCell"];
+        cell.logCategory = self.logCategory;
+        return cell;
     }
     else {
         DetailsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"DetailsTableViewCell"];
@@ -86,14 +88,19 @@
     }
 }
 
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.logCategory.entries.count + 1;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return @"Gas Price, Miles over Time";
+        NSMutableArray *names = [[NSMutableArray alloc] init];
+        for (Field *field in self.logCategory.schemaEntry.fields) {
+            [names addObject:field.name];
+        }
+
+        // http://stackoverflow.com/a/7654733/566878
+        return [names componentsJoinedByString: @", "];
     }
     else {
         return [NSString stringWithFormat:@"Entry #%ld", (long)section];

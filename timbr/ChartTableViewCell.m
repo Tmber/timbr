@@ -13,11 +13,17 @@
 
 - (void)awakeFromNib {
     
-    self.log = [LogCategory getMockLog];
-    
+}
+
+- (void) setLogCategory:(LogCategory *)logCategory {
+    _logCategory = logCategory;
+    [self setupChart];
+}
+
+- (void) setupChart {
     NSMutableArray *xLabels = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < self.log.entries.count; i++) {
+    for (int i = 0; i < self.logCategory.entries.count; i++) {
         [xLabels addObject: [NSString stringWithFormat:@"%d", i + 1]];
     }
     
@@ -43,7 +49,7 @@
         };
         [chartDataArray addObject:lineChartData];
     }
-
+    
     lineChart.chartData = chartDataArray;
     [lineChart strokeChart];
     
@@ -53,7 +59,7 @@
 
 - (NSArray *)getArrayOfFieldNumberValues:(int)index {
     NSMutableArray *yLabelDataForLoop = [NSMutableArray array];
-    for (Entry *tree in self.log.entries) {
+    for (Entry *tree in self.logCategory.entries) {
         if (tree.fields.count > self.maxFieldCount) {
             self.maxFieldCount = tree.fields.count;
         }
