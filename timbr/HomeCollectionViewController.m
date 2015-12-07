@@ -8,6 +8,9 @@
 
 #import "HomeCollectionViewController.h"
 #import "DetailsTableViewController.h"
+#import "LogCollection.h"
+#import "LogCategory.h"
+#import "CategoryViewController.h"
 
 @interface HomeCollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
@@ -16,16 +19,19 @@
 
 @implementation HomeCollectionViewController
 
+- (IBAction)onAddLogCategoryPressed:(id)sender {
+    // Launch new category.
+    // On completion refresh log collection
+    CategoryViewController *categoryViewController = [[CategoryViewController alloc] init];
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:categoryViewController];
+    
+    [self presentViewController:nvc animated:YES completion:nil];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    NSMutableArray *firstSection = [[NSMutableArray alloc] init];
-    NSMutableArray *secondSection = [[NSMutableArray alloc] init];
-    for (int i=0; i<50; i++) {
-        [firstSection addObject:[NSString stringWithFormat:@"Cell %d", i]];
-        [secondSection addObject:[NSString stringWithFormat:@"item %d", i]];
-    }
-    self.dataArray = [[NSArray alloc] initWithObjects:firstSection, secondSection, nil];
+
+    self.dataArray = [[NSArray alloc] initWithObjects:[LogCollection sharedInstance].logCategories, nil];
     UINib *cellNib = [UINib nibWithNibName:@"HomeCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"homeCell"];
     
@@ -36,11 +42,18 @@
     [self.collectionView setCollectionViewLayout:flowLayout];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.collectionView reloadData];
+}
+
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     NSMutableArray *data = [self.dataArray objectAtIndex:indexPath.section];
+    LogCategory *logCategory = [data objectAtIndex:indexPath.row];
     
-    NSString *cellData = [data objectAtIndex:indexPath.row];
+    NSString *cellData = logCategory.name;
     
     static NSString *cellIdentifier = @"homeCell";
     
@@ -50,11 +63,7 @@
     
     [titleLabel setText:cellData];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap:)];
-    [cell addGestureRecognizer:tap];
-    
     return cell;
-    
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -66,9 +75,17 @@
     return [sectionArray count];
 }
 
-- (IBAction)onTap:(id)sender {
-    NSLog(@"on tap");
-    [self.navigationController pushViewController:[[DetailsTableViewController alloc] init] animated:YES];
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSMutableArray *data = [self.dataArray objectAtIndex:indexPath.section];
+    LogCategory *logCategory = [data objectAtIndex:indexPath.row];
+
+    DetailsTableViewController *detailsTableViewController = [[DetailsTableViewController alloc] init];
+    
+    detailsTableViewController.logCategory = logCategory;
+    
+    // TODO detailsTableViewController.logCategory = figure out from sender
+    [self.navigationController pushViewController:detailsTableViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

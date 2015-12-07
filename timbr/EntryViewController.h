@@ -1,15 +1,15 @@
 //
-//  DetailsTableViewController.h
+//  EntryViewController.h
 //  timbr
 //
-//  Created by Chris Guzman on 11/21/15.
+//  Created by Ankush Raina on 12/2/15.
 //  Copyright © 2015 Tmber. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "LogCategory.h"
 
-@interface DetailsTableViewController : UITableViewController
+@interface EntryViewController : UIViewController
 
 @property (strong, nonatomic) LogCategory *logCategory;
 

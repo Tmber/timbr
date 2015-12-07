@@ -10,12 +10,12 @@
 #import "DetailsTableViewCell.h"
 #import "PNChart.h"
 #import "ChartTableViewCell.h"
-#import "LogCategory.h"
 #import "Entry.h"
 #import "Field.h"
+#import "EntryViewController.h"
+
 @interface DetailsTableViewController ()
-@property NSArray *data;
-@property LogCategory *log;
+
 @end
 
 @implementation DetailsTableViewController
@@ -24,23 +24,34 @@
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"DetailsTableViewCell" bundle:nil] forCellReuseIdentifier:@"DetailsTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"ChartTableViewCell" bundle:nil] forCellReuseIdentifier:@"ChartTableViewCell"];
-    
-    LogCategory *mockLog = [LogCategory getMockLog];
-    self.log = mockLog;
-    
+
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.title = self.log.name;
+    self.title = self.logCategory.name;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add Entry" style:UIBarButtonItemStylePlain target:self action:@selector(onAddEntryButtonPress)];
+}
+
+- (void)onAddEntryButtonPress {
+    EntryViewController *entryViewController = [[EntryViewController alloc] init];
+    entryViewController.logCategory = self.logCategory;
+    //[self presentViewController:entryViewController animated:YES completion:nil];
+    [self.navigationController pushViewController:entryViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -50,7 +61,7 @@
         return 1;
     }
     else {
-        Entry *tree = [self.log.entries objectAtIndex:(section - 1)];
+        Entry *tree = [self.logCategory.entries objectAtIndex:(section - 1)];
         return tree.fields.count;
     }
 }
@@ -64,7 +75,7 @@
     }
     else {
         DetailsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"DetailsTableViewCell"];
-        Entry *tree = [self.log.entries objectAtIndex:(indexPath.section - 1)];
+        Entry *tree = [self.logCategory.entries objectAtIndex:(indexPath.section - 1)];
         Field *field = [tree.fields objectAtIndex:indexPath.row];
         cell.nameLabel.text = field.name;
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -77,7 +88,7 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.log.entries.count + 1;
+    return self.logCategory.entries.count + 1;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
