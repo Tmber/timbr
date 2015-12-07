@@ -12,6 +12,7 @@
 #import "ChartTableViewCell.h"
 #import "Entry.h"
 #import "Field.h"
+#import "EntryViewController.h"
 
 @interface DetailsTableViewController ()
 
@@ -31,11 +32,25 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add Entry" style:UIBarButtonItemStylePlain target:self action:@selector(onAddEntryButtonPress)];
+}
+
+- (void)onAddEntryButtonPress {
+    EntryViewController *entryViewController = [[EntryViewController alloc] init];
+    entryViewController.logCategory = self.logCategory;
+    //[self presentViewController:entryViewController animated:YES completion:nil];
+    [self.navigationController pushViewController:entryViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source

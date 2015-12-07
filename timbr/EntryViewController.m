@@ -51,13 +51,18 @@
 
 #pragma mark - private methods
 - (void)onCancelButtonPress {
-    NSLog(@"Cancel button pressed");
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)onSaveButtonPress {
-    NSLog(@"Save button pressed");
-    // TODO Save name
-    // TODO Save fields
+    Entry *entry = [[Entry alloc] init];
+    // TODO make copy of schema entry
+    entry = self.logCategory.schemaEntry;
+    [self.logCategory.entries addObject:entry];
+    
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*
