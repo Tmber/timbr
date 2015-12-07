@@ -91,6 +91,7 @@
     logCategory.name = self.categoryNameTextBox.text;
     logCategory.schemaEntry = [[Entry alloc] init];
     logCategory.schemaEntry.fields = self.fields;
+    logCategory.entries = [[NSMutableArray alloc] init];
     
     [[LogCollection sharedInstance].logCategories addObject:logCategory];
     [self dismissViewControllerAnimated:YES completion:nil];

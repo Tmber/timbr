@@ -11,7 +11,7 @@
 
 @interface EntryViewController () <UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (strong, nonatomic) Entry *entry;
 @end
 
 @implementation EntryViewController
@@ -19,6 +19,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    // TODO Refactor below code to "copy constructor"
+    self.entry = [[Entry alloc] init];
+    self.entry.fields = [[NSMutableArray alloc] init];
+    for (Field *field in self.logCategory.schemaEntry.fields) {
+        Field *newField = [[Field alloc] init];
+        newField.name = field.name;
+        newField.dataType = field.dataType;
+        [self.entry.fields addObject:newField];
+    }
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"FieldDataTableViewCell" bundle:nil] forCellReuseIdentifier:@"FieldDataTableViewCell"];
     
     self.tableView.dataSource = self;
@@ -38,13 +48,13 @@
 #pragma mark - Table view methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.logCategory.schemaEntry.fields.count;
+    return self.entry.fields.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FieldDataTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FieldDataTableViewCell"];
     
-    cell.field = self.logCategory.schemaEntry.fields[indexPath.row];
+    cell.field = self.entry.fields[indexPath.row];
     
     return cell;
 }
@@ -56,10 +66,7 @@
 }
 
 - (void)onSaveButtonPress {
-    Entry *entry = [[Entry alloc] init];
-    // TODO make copy of schema entry
-    entry = self.logCategory.schemaEntry;
-    [self.logCategory.entries addObject:entry];
+    [self.logCategory.entries addObject:self.entry];
     
     //[self dismissViewControllerAnimated:YES completion:nil];
     [self.navigationController popViewControllerAnimated:YES];

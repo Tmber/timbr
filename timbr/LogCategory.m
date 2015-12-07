@@ -8,8 +8,20 @@
 
 #import "LogCategory.h"
 #import "Entry.h"
+#import "Field.h"
 
 @implementation LogCategory
+
+// @property (nonatomic, strong) Entry *schemaEntry;
+
+- (void) setSchemaEntry:(Entry *)schemaEntry {
+    // Set number value to zero
+    for (Field *item in schemaEntry.fields) {
+        item.numberValue = 0;
+    }
+
+    _schemaEntry = schemaEntry;
+}
 
 +(LogCategory *)getMockLog{
     LogCategory *log = [[LogCategory alloc] init];
