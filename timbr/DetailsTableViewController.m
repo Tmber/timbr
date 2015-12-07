@@ -24,6 +24,7 @@
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"DetailsTableViewCell" bundle:nil] forCellReuseIdentifier:@"DetailsTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"ChartTableViewCell" bundle:nil] forCellReuseIdentifier:@"ChartTableViewCell"];
+
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.title = self.logCategory.name;
 
@@ -77,7 +78,10 @@
         Entry *tree = [self.logCategory.entries objectAtIndex:(indexPath.section - 1)];
         Field *field = [tree.fields objectAtIndex:indexPath.row];
         cell.nameLabel.text = field.name;
-        cell.valueLabel.text = [NSString stringWithFormat:@"%@", field.numberValue];
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setMaximumFractionDigits:2];
+        [formatter setMinimumFractionDigits:2];
+        cell.valueLabel.text = [formatter stringFromNumber:field.numberValue];
         return cell;
     }
 }
@@ -89,7 +93,7 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return @"Gas Price over Miles";
+        return @"Gas Price, Miles over Time";
     }
     else {
         return [NSString stringWithFormat:@"Entry #%ld", (long)section];
