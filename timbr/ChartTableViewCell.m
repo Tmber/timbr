@@ -21,62 +21,67 @@
 }
 
 - (void) setupChart {
-    NSArray* colorArray = @[
-                                   PNGreen,
-                                   PNTitleColor,
-                                   PNRed,
-                                   PNMauve,
-                                   PNBlack,
-                                   PNBlue,
-                                   PNBrown,
-                                   PNYellow
-                                   ];
-    NSMutableArray *xLabels = [[NSMutableArray alloc] init];
-    
-    for (int i = 0; i < self.logCategory.entries.count; i++) {
-        [xLabels addObject: [NSString stringWithFormat:@"%d", i + 1]];
+    if (self.logCategory.entries.count > 0) {
+        NSArray* colorArray = @[
+                                       PNGreen,
+                                       PNTitleColor,
+                                       PNRed,
+                                       PNMauve,
+                                       PNBlack,
+                                       PNBlue,
+                                       PNBrown,
+                                       PNYellow
+                                       ];
+        NSMutableArray *xLabels = [[NSMutableArray alloc] init];
+        
+        for (int i = 0; i < self.logCategory.entries.count; i++) {
+            [xLabels addObject: [NSString stringWithFormat:@"%d", i + 1]];
+        }
+        
+        PNLineChart * lineChart = [[PNLineChart alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200.0)];
+        [lineChart setXLabels:xLabels];
+        
+        NSMutableArray *yLabelData = [NSMutableArray array];
+        int index = 0;
+        self.maxFieldCount = 1;
+        while (index < self.maxFieldCount) {
+            [yLabelData addObject: [self getArrayOfFieldNumberValues:index]];
+            index++;
+        }
+        int fieldIndex = 0;
+        NSMutableArray *chartDataArray = [NSMutableArray array];
+        for (NSArray *array in yLabelData) {
+            NSArray * dataArray = array;
+            PNLineChartData *lineChartData = [PNLineChartData new];
+            Field *field = [self.logCategory.schemaEntry.fields objectAtIndex:fieldIndex];
+            lineChartData.dataTitle = field.name;
+            fieldIndex++;
+            lineChartData.color = [colorArray objectAtIndex:fieldIndex];
+            lineChartData.itemCount = lineChart.xLabels.count;
+            lineChartData.inflexionPointStyle = PNLineChartPointStyleTriangle;
+            lineChartData.getData = ^(NSUInteger index) {
+                CGFloat yValue = [dataArray[index] floatValue];
+                return [PNLineChartDataItem dataItemWithY:yValue];
+            };
+            [chartDataArray addObject:lineChartData];
+        }
+        
+        lineChart.chartData = chartDataArray;
+        [lineChart strokeChart];
+        
+        [self.subView addSubview:lineChart];
+        
+        lineChart.legendStyle = PNLegendItemStyleStacked;
+        lineChart.legendFont = [UIFont boldSystemFontOfSize:12.0f];
+        lineChart.legendFontColor = [UIColor redColor];
+        
+        UIView *legend = [lineChart getLegendWithMaxWidth:320];
+        [legend setFrame:CGRectMake(30, 30, legend.frame.size.width, legend.frame.size.width)];
+        [self.belowView addSubview:legend];
     }
-    
-    PNLineChart * lineChart = [[PNLineChart alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200.0)];
-    [lineChart setXLabels:xLabels];
-    
-    NSMutableArray *yLabelData = [NSMutableArray array];
-    int index = 0;
-    self.maxFieldCount = 1;
-    while (index < self.maxFieldCount) {
-        [yLabelData addObject: [self getArrayOfFieldNumberValues:index]];
-        index++;
+    else {
+        
     }
-    int fieldIndex = 0;
-    NSMutableArray *chartDataArray = [NSMutableArray array];
-    for (NSArray *array in yLabelData) {
-        NSArray * dataArray = array;
-        PNLineChartData *lineChartData = [PNLineChartData new];
-        Field *field = [self.logCategory.schemaEntry.fields objectAtIndex:fieldIndex];
-        lineChartData.dataTitle = field.name;
-        fieldIndex++;
-        lineChartData.color = [colorArray objectAtIndex:fieldIndex];
-        lineChartData.itemCount = lineChart.xLabels.count;
-        lineChartData.inflexionPointStyle = PNLineChartPointStyleTriangle;
-        lineChartData.getData = ^(NSUInteger index) {
-            CGFloat yValue = [dataArray[index] floatValue];
-            return [PNLineChartDataItem dataItemWithY:yValue];
-        };
-        [chartDataArray addObject:lineChartData];
-    }
-    
-    lineChart.chartData = chartDataArray;
-    [lineChart strokeChart];
-    
-    [self.subView addSubview:lineChart];
-    
-    lineChart.legendStyle = PNLegendItemStyleStacked;
-    lineChart.legendFont = [UIFont boldSystemFontOfSize:12.0f];
-    lineChart.legendFontColor = [UIColor redColor];
-    
-    UIView *legend = [lineChart getLegendWithMaxWidth:320];
-    [legend setFrame:CGRectMake(30, 30, legend.frame.size.width, legend.frame.size.width)];
-    [self.belowView addSubview:legend];
 }
 
 

@@ -77,13 +77,15 @@
     }
     else {
         DetailsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"DetailsTableViewCell"];
-        Entry *tree = [self.logCategory.entries objectAtIndex:(indexPath.section - 1)];
-        Field *field = [tree.fields objectAtIndex:indexPath.row];
-        cell.nameLabel.text = field.name;
-        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        [formatter setMaximumFractionDigits:2];
-        [formatter setMinimumFractionDigits:2];
-        cell.valueLabel.text = [formatter stringFromNumber:field.numberValue];
+        if (self.logCategory.entries.count > 0) {
+            Entry *tree = [self.logCategory.entries objectAtIndex:(indexPath.section - 1)];
+            Field *field = [tree.fields objectAtIndex:indexPath.row];
+            cell.nameLabel.text = field.name;
+            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+            [formatter setMaximumFractionDigits:2];
+            [formatter setMinimumFractionDigits:2];
+            cell.valueLabel.text = [formatter stringFromNumber:field.numberValue];
+        }
         return cell;
     }
 }
