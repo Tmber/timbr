@@ -26,6 +26,26 @@ NSString *const FieldTypeCurrency = @"Currency";
     }
 }
 
+-(void) save:(PFObject *)entry{
+    PFObject *parseField = [PFObject objectWithClassName:@"Field"];
+    parseField[@"parent"] = entry;
+    parseField[@"name"] = _name;
+    if (_numberValue) {
+        parseField[@"numberValue"] = _numberValue;
+    }
+    if (_dateValue) {
+        parseField[@"dateValue"] = _dateValue;
+    }
+    if (_stringValue) {
+        parseField[@"stringValue"] = _stringValue;
+    }
+    [parseField saveEventually:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            NSLog(@"Field saved");
+        }
+    }];
+}
+
 +(Field *) getMockFielda{
     Field *fld = [[Field alloc] init];
     srand48(time(0));

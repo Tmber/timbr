@@ -24,15 +24,59 @@
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"DetailsTableViewCell" bundle:nil] forCellReuseIdentifier:@"DetailsTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"ChartTableViewCell" bundle:nil] forCellReuseIdentifier:@"ChartTableViewCell"];
+    
+    LogCategory *mockLog = [LogCategory getMockLog];
+    self.logCategory =  mockLog;
+    PFQuery *query = [PFQuery queryWithClassName:@"LogCategory"];
+    [query whereKey:@"parent" equalTo:[PFUser currentUser]];
+    [query includeKey:@"entry"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *categories, NSError *error) {
+        if (categories.count > 0) {
+            LogCategory *category = [[LogCategory alloc] init];
+            category.entries = [[NSMutableArray alloc] init];
+            PFObject *parseLog = [categories objectAtIndex:0];
+            category.name = parseLog[@"name"];
+            PFQuery *entriesQuery = [PFQuery queryWithClassName:@"Entry"];
+            [entriesQuery whereKey:@"parent" equalTo:parseLog.objectId];
+            [entriesQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable entries, NSError * _Nullable error) {
+                for (PFObject *parseEntry in entries) {
+                    Entry *entry = [[Entry alloc] init];
+                    entry.fields = [[NSMutableArray alloc] init];
+                    PFQuery *entryQuery = [PFQuery queryWithClassName:@"Field"];
+                    [entryQuery whereKey:@"parent" equalTo:parseEntry.objectId];
+                    [entryQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable fields, NSError * _Nullable error) {
+                        for (PFObject *parseField in fields) {
+                            Field *field = [[Field alloc] init];
+                            field.numberValue = parseField[@"numberValue"];
+                            field.name = parseField[@"name"];
+                            [entry.fields addObject:field];
+                        }
+                    }];
+                    [category.entries addObject:entry];
+                }
+            }];
+            self.logCategory = category;
+            NSLog(@"Reload! %@", categories);
+            [self.tableView reloadData];
+            
+        }
+    }];
 
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.title = self.logCategory.name;
+
+//    user.logCategories = [[NSMutableArray alloc] init];
+//    [user.logCategories addObject:self.log];
+    NSLog(@"%@", self.logCategory);
+//    [user saveAllData];
+
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.title = self.logCategory.name;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add Entry" style:UIBarButtonItemStylePlain target:self action:@selector(onAddEntryButtonPress)];
 }
 

@@ -29,6 +29,7 @@
     
     PNLineChart * lineChart = [[PNLineChart alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200.0)];
     [lineChart setXLabels:xLabels];
+    lineChart.yFixedValueMin = -50;
     
     NSMutableArray *yLabelData = [NSMutableArray array];
     int index = 0;
