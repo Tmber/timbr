@@ -34,6 +34,10 @@
 		F6DC76B01C0EE52900DBD2BD /* FieldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6DC76AE1C0EE52900DBD2BD /* FieldViewController.xib */; };
 		F6DC76B41C0FAA5400DBD2BD /* FieldsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DC76B21C0FAA5400DBD2BD /* FieldsTableViewCell.m */; };
 		F6DC76B51C0FAA5400DBD2BD /* FieldsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6DC76B31C0FAA5400DBD2BD /* FieldsTableViewCell.xib */; };
+		F980FBD01C16ABD70003734D /* IconPickerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F980FBCF1C16ABD70003734D /* IconPickerCollectionViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		F980FBD41C16B87A0003734D /* IconPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F980FBD21C16B87A0003734D /* IconPickerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		F980FBD51C16B87A0003734D /* IconPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F980FBD31C16B87A0003734D /* IconPickerViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		F980FBD71C16BE3D0003734D /* filenames.txt in Resources */ = {isa = PBXBuildFile; fileRef = F980FBD61C16BE3D0003734D /* filenames.txt */; settings = {ASSET_TAGS = (); }; };
 		F9AB7E3A1C0D0AA3005BB778 /* Field.m in Sources */ = {isa = PBXBuildFile; fileRef = F9AB7E391C0D0AA3005BB778 /* Field.m */; };
 		F9AB7E481C0E4B95005BB778 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9AB7E471C0E4B95005BB778 /* HomeCollectionViewCell.xib */; };
 		F9AB7E4F1C0E4B9E005BB778 /* HomeCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9AB7E491C0E4B9E005BB778 /* HomeCollectionViewController.m */; };
@@ -87,6 +91,11 @@
 		F6DC76B11C0FAA5400DBD2BD /* FieldsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldsTableViewCell.h; sourceTree = "<group>"; };
 		F6DC76B21C0FAA5400DBD2BD /* FieldsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FieldsTableViewCell.m; sourceTree = "<group>"; };
 		F6DC76B31C0FAA5400DBD2BD /* FieldsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FieldsTableViewCell.xib; sourceTree = "<group>"; };
+		F980FBCF1C16ABD70003734D /* IconPickerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconPickerCollectionViewCell.xib; sourceTree = "<group>"; };
+		F980FBD11C16B87A0003734D /* IconPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconPickerViewController.h; sourceTree = "<group>"; };
+		F980FBD21C16B87A0003734D /* IconPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconPickerViewController.m; sourceTree = "<group>"; };
+		F980FBD31C16B87A0003734D /* IconPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconPickerViewController.xib; sourceTree = "<group>"; };
+		F980FBD61C16BE3D0003734D /* filenames.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = filenames.txt; sourceTree = "<group>"; };
 		F9AB7E381C0D0AA3005BB778 /* Field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Field.h; path = Models/Field.h; sourceTree = "<group>"; };
 		F9AB7E391C0D0AA3005BB778 /* Field.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Field.m; path = Models/Field.m; sourceTree = "<group>"; };
 		F9AB7E471C0E4B95005BB778 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -140,6 +149,7 @@
 		7A8582AE1BFE797A001D96F5 /* timbr */ = {
 			isa = PBXGroup;
 			children = (
+				F980FBD61C16BE3D0003734D /* filenames.txt */,
 				7A8583011BFF05F0001D96F5 /* Views */,
 				7A8582FB1BFEDB16001D96F5 /* View Controllers */,
 				7A8582F41BFED16D001D96F5 /* Models */,
@@ -201,6 +211,9 @@
 				F6967C071C10068800ED1765 /* EntryViewController.h */,
 				F6967C081C10068800ED1765 /* EntryViewController.m */,
 				F6967C091C10068800ED1765 /* EntryViewController.xib */,
+				F980FBD11C16B87A0003734D /* IconPickerViewController.h */,
+				F980FBD21C16B87A0003734D /* IconPickerViewController.m */,
+				F980FBD31C16B87A0003734D /* IconPickerViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -221,6 +234,7 @@
 				F6967C131C1165B100ED1765 /* FieldDataTableViewCell.h */,
 				F6967C141C1165B100ED1765 /* FieldDataTableViewCell.m */,
 				F6967C151C1165B100ED1765 /* FieldDataTableViewCell.xib */,
+				F980FBCF1C16ABD70003734D /* IconPickerCollectionViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -296,7 +310,9 @@
 			files = (
 				F6967C171C1165B100ED1765 /* FieldDataTableViewCell.xib in Resources */,
 				7A85831C1C004AC5001D96F5 /* DetailsTableViewController.xib in Resources */,
+				F980FBD71C16BE3D0003734D /* filenames.txt in Resources */,
 				7A8582C21BFE797A001D96F5 /* LaunchScreen.storyboard in Resources */,
+				F980FBD51C16B87A0003734D /* IconPickerViewController.xib in Resources */,
 				F9AB7E501C0E4B9E005BB778 /* HomeCollectionViewController.xib in Resources */,
 				7A8582BF1BFE797A001D96F5 /* Assets.xcassets in Resources */,
 				7A8583121C00247C001D96F5 /* DetailsTableViewCell.xib in Resources */,
@@ -308,6 +324,7 @@
 				F6967C0B1C10068800ED1765 /* EntryViewController.xib in Resources */,
 				F6DC76AB1C0EB81400DBD2BD /* CategoryViewController.xib in Resources */,
 				F9AB7E521C0E4B9E005BB778 /* LoginViewController.xib in Resources */,
+				F980FBD01C16ABD70003734D /* IconPickerCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +399,7 @@
 				F6DC76B41C0FAA5400DBD2BD /* FieldsTableViewCell.m in Sources */,
 				F6DC76AA1C0EB81400DBD2BD /* CategoryViewController.m in Sources */,
 				7A8582B41BFE797A001D96F5 /* AppDelegate.m in Sources */,
+				F980FBD41C16B87A0003734D /* IconPickerViewController.m in Sources */,
 				7A8582B11BFE797A001D96F5 /* main.m in Sources */,
 				7A8583111C00247C001D96F5 /* DetailsTableViewCell.m in Sources */,
 			);

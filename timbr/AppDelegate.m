@@ -13,6 +13,7 @@
 #import "CategoryViewController.h"
 #import "EntryViewController.h"
 #import <Parse/Parse.h>
+#import "IconPickerViewController.h"
 
 @interface AppDelegate ()
 
@@ -28,8 +29,9 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    DetailsTableViewController *detailVC = [[DetailsTableViewController alloc] init];
+//    DetailsTableViewController *detailVC = [[DetailsTableViewController alloc] init];
     HomeCollectionViewController *hcvc = [[HomeCollectionViewController alloc] init];
+//    IconPickerViewController *ipvc = [[IconPickerViewController alloc] init];
 //    LoginViewController *lvc = [[LoginViewController alloc] init];
 //    CategoryViewController *categoryViewController = [[CategoryViewController alloc] init];
 //    EntryViewController *entryViewController = [[EntryViewController alloc] init];
@@ -37,6 +39,7 @@
     
 //    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:detailVC];
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:hcvc];
+//    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:ipvc];
 //    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:lvc];
 //    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:categoryViewController];
 //    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:entryViewController];

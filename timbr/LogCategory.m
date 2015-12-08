@@ -26,6 +26,7 @@
 +(LogCategory *)getMockLog{
     LogCategory *log = [[LogCategory alloc] init];
     log.name = @"Car Maintenance";
+    log.image = [UIImage imageNamed:@"ic_build_48pt"];
     log.entries = [NSMutableArray array];
     log.schemaEntry = [Entry getMockEntry1];
     [log.entries addObject:[Entry getMockEntry1]];

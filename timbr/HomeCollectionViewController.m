@@ -63,6 +63,9 @@
     
     [titleLabel setText:cellData];
     
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:10];
+    imageView.image = logCategory.image;
+    
     return cell;
 }
 
