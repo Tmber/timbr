@@ -35,8 +35,13 @@
     user.username = user.email;
     
     
+    
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {   // Hooray! Let them use the app now.
+        if (!error) {
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:self.emailText.text forKey:@"email"];
+            [defaults setObject:self.password.text forKey:@"password"];
+            [defaults synchronize];
         } else {   NSString *errorString = [error userInfo][@"error"];   // Show the errorString somewhere and let the user try again.
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Signup Error!"
                                                                            message:errorString
@@ -55,6 +60,10 @@
     [PFUser logInWithUsernameInBackground:self.emailText.text password:self.password.text
                                     block:^(PFUser *user, NSError *error) {
                                         if (user) {
+                                            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                                            [defaults setObject:self.emailText.text forKey:@"email"];
+                                            [defaults setObject:self.password.text forKey:@"password"];
+                                            [defaults synchronize];
                                             // Do stuff after successful login.
                                             HomeCollectionViewController *hvc = [[HomeCollectionViewController alloc] init];
 //                                            [self presentViewController:hvc animated:YES completion:nil];

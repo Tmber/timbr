@@ -23,27 +23,30 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [Parse enableLocalDatastore];
     [Parse setApplicationId:@"9MRxvMKQJ4BBqDImTLB6BK31I5hB9NiejYMZCIIP"
                   clientKey:@"B9DLF9A4GEeDMR0IA73ZrdQiZJImfMbhlYcXIKit"];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    DetailsTableViewController *detailVC = [[DetailsTableViewController alloc] init];
-    HomeCollectionViewController *hcvc = [[HomeCollectionViewController alloc] init];
+    [self attemptLogin];
+    
+//    DetailsTableViewController *detailVC = [[DetailsTableViewController alloc] init];
+//    HomeCollectionViewController *hcvc = [[HomeCollectionViewController alloc] init];
 //    LoginViewController *lvc = [[LoginViewController alloc] init];
 //    CategoryViewController *categoryViewController = [[CategoryViewController alloc] init];
 //    EntryViewController *entryViewController = [[EntryViewController alloc] init];
 //    entryViewController.logCategory = [LogCategory getMockLog];
     
 //    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:detailVC];
-    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:hcvc];
+//    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:hcvc];
 //    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:lvc];
 //    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:categoryViewController];
 //    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:entryViewController];
-    
-    self.window.rootViewController = nvc;
-    
-    [self.window makeKeyAndVisible];
+//    
+//    self.window.rootViewController = nvc;
+//    
+//    [self.window makeKeyAndVisible];
     
     return YES;
 }
@@ -70,6 +73,36 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+}
+
+-(void)attemptLogin {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults synchronize];
+    NSString *email = [defaults objectForKey:@"email"];
+    NSString *password = [defaults objectForKey:@"password"];
+    if (email != nil && password != nil) {
+        [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error) {
+            if (user) {
+                HomeCollectionViewController *hvc = [[HomeCollectionViewController alloc] init];
+                UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:hvc];
+                self.window.rootViewController = nvc;
+                [self.window makeKeyAndVisible];
+                
+            } else {
+                [self promptLogin];
+            }
+        }];
+    }
+    else {
+        [self promptLogin];
+    }
+}
+
+-(void) promptLogin {
+    LoginViewController *lvc = [[LoginViewController alloc] init];
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:lvc];
+    self.window.rootViewController = nvc;
+    [self.window makeKeyAndVisible];
 }
 
 #pragma mark - Core Data stack
