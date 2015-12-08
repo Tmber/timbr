@@ -7,14 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Entry.h"
+#import <Parse/Parse.h>
 
+@class Entry;
 @interface LogCategory : NSObject
 
 @property (nonatomic, strong) NSMutableArray *entries;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) Entry *schemaEntry;
+@property Entry *schemaEntry;
 
 +(LogCategory *) getMockLog;
+
+-(void) save:(PFUser *)user;
 
 @end

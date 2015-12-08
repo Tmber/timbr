@@ -23,6 +23,20 @@
     _schemaEntry = schemaEntry;
 }
 
+-(void) save:(PFUser *)user {
+    PFObject *parseLog = [PFObject objectWithClassName:@"LogCategory"];
+    parseLog[@"parent"] = user;
+    parseLog[@"name"] = _name;
+    for (Entry *entry in self.entries) {
+        [entry save:parseLog];
+    }
+    [parseLog saveEventually:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            NSLog(@"Log saved");
+        }
+    }];
+}
+
 +(LogCategory *)getMockLog{
     LogCategory *log = [[LogCategory alloc] init];
     log.name = @"Car Maintenance";

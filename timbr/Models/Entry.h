@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <Parse/Parse.h>
+#import "LogCategory.h"
 @interface Entry : NSObject
 
 @property (nonatomic, strong) NSMutableArray *fields;
@@ -17,4 +18,6 @@
 +(Entry *)getMockEntry3;
 +(Entry *)getMockEntry4;
 
+
+-(void) save:(PFObject *)category;
 @end

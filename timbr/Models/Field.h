@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import "Entry.h"
 
 FOUNDATION_EXPORT NSString *const FieldTypeNumber;
 FOUNDATION_EXPORT NSString *const FieldTypeDecimal;
@@ -29,5 +31,7 @@ FOUNDATION_EXPORT NSString *const FieldTypeCurrency;
 +(Field *) getMockFieldb;
 +(Field *) getMockField1:(double)num;
 +(Field *) getMockField2:(double)num;
+
+-(void) save:(PFObject *)entry;
 
 @end

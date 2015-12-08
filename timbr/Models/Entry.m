@@ -11,6 +11,19 @@
 
 @implementation Entry
 
+-(void) save:(PFObject *)category{
+    PFObject *parseEntry = [PFObject objectWithClassName:@"Entry"];
+    parseEntry[@"parent"] = category;
+    for (Field *field in _fields) {
+        [field save:parseEntry];
+    }
+    [parseEntry saveEventually:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            NSLog(@"Entry saved");
+        }
+    }];
+}
+
 +(Entry *)getMockEntry1{
     Entry *entry = [[Entry alloc] init];
     entry.fields = [[NSMutableArray alloc] init];

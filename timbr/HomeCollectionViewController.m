@@ -30,7 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.dataArray = [[NSArray alloc] initWithObjects:[LogCollection sharedInstance].logCategories, nil];
     UINib *cellNib = [UINib nibWithNibName:@"HomeCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"homeCell"];
