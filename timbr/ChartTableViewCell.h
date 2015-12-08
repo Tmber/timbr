@@ -13,6 +13,7 @@
 
 @interface ChartTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIView *subView;
+@property (weak, nonatomic) IBOutlet UIView *belowView;
 @property NSArray* data;
 @property (weak, nonatomic) LogCategory* logCategory;
 @property NSInteger maxFieldCount;

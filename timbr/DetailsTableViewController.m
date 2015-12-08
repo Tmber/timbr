@@ -109,7 +109,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 300;
+        return 800;
     }
     else {
         return self.tableView.estimatedRowHeight;

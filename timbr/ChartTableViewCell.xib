@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="252" id="KGk-i7-Jjw" customClass="ChartTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="252"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="327" id="KGk-i7-Jjw" customClass="ChartTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="327"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="252"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="326.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="flP-Qt-ZP9">
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="flP-Qt-ZP9">
                         <rect key="frame" x="8" y="8" width="304" height="235"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -23,18 +22,39 @@
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="lE9-CD-02R"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xvx-08-Utc" userLabel="Below View">
+                        <rect key="frame" x="8" y="251" width="304" height="68"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Jpc-fH-f0b"/>
+                            <constraint firstAttribute="height" constant="68" id="nDt-5F-j2j"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="xvx-08-Utc" firstAttribute="trailing" secondItem="flP-Qt-ZP9" secondAttribute="trailing" id="CRE-Su-L1r"/>
                     <constraint firstItem="flP-Qt-ZP9" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="JZU-yB-jII"/>
+                    <constraint firstItem="flP-Qt-ZP9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="KlN-BU-jQo"/>
                     <constraint firstItem="flP-Qt-ZP9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="SX3-gu-gv9"/>
+                    <constraint firstItem="flP-Qt-ZP9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Vjc-pA-AMV"/>
                     <constraint firstItem="flP-Qt-ZP9" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="ePl-OD-7lz"/>
+                    <constraint firstAttribute="trailing" secondItem="flP-Qt-ZP9" secondAttribute="trailing" constant="8" id="ffS-ZS-HWC"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="xvx-08-Utc" secondAttribute="bottom" constant="-0.5" id="kXd-SL-gNH"/>
+                    <constraint firstItem="xvx-08-Utc" firstAttribute="leading" secondItem="flP-Qt-ZP9" secondAttribute="leading" id="mEj-pi-tUN"/>
                     <constraint firstItem="flP-Qt-ZP9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="qg2-Z5-RQ9"/>
+                    <constraint firstItem="xvx-08-Utc" firstAttribute="top" secondItem="flP-Qt-ZP9" secondAttribute="bottom" constant="8" id="uYC-US-yxX"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="uYC-US-yxX"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="belowView" destination="xvx-08-Utc" id="WL1-1t-LqW"/>
                 <outlet property="subView" destination="flP-Qt-ZP9" id="udY-IP-Rg2"/>
             </connections>
-            <point key="canvasLocation" x="386" y="556"/>
+            <point key="canvasLocation" x="386" y="593.5"/>
         </tableViewCell>
     </objects>
 </document>
