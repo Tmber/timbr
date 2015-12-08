@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "Entry.h"
 
 @interface LogCategory : NSObject
@@ -14,6 +15,7 @@
 @property (nonatomic, strong) NSMutableArray *entries;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) Entry *schemaEntry;
+@property (nonatomic, strong) UIImage *image;
 
 +(LogCategory *) getMockLog;
 

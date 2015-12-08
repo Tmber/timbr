@@ -12,13 +12,15 @@
 #import "LogCollection.h"
 #import "LogCategory.h"
 #import "Entry.h"
+#import "IconPickerViewController.h"
 
-@interface CategoryViewController () <UITableViewDataSource, FieldsTableViewCellDelegate, FieldViewControllerDelegate>
+@interface CategoryViewController () <UITableViewDataSource, FieldsTableViewCellDelegate, FieldViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, IconPickerViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *fieldsTableView;
 @property (weak, nonatomic) IBOutlet UITextField *categoryNameTextBox;
 
 @property (strong, nonatomic) NSMutableArray *fields;
+@property (strong, nonatomic) UIImage *currentImage;
 
 @end
 
@@ -80,6 +82,60 @@
     [self presentViewController:nvc animated:YES completion:nil];
 }
 
+- (IBAction)onSetImageButtonPress:(id)sender {
+    UIAlertController * view=   [UIAlertController
+                                 alertControllerWithTitle:nil
+                                 message:nil
+                                 preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction* choosePhoto = [UIAlertAction
+                                  actionWithTitle:@"Choose from photo library"
+                                  style:UIAlertActionStyleDefault
+                                  handler:^(UIAlertAction * action)
+                                  {
+                                      [self presentImagePicker];
+                                      
+                                  }];
+    UIAlertAction* chooseIcon = [UIAlertAction
+                                  actionWithTitle:@"Choose default icons"
+                                  style:UIAlertActionStyleDefault
+                                  handler:^(UIAlertAction * action)
+                                  {
+                                      IconPickerViewController *ipvc = [[IconPickerViewController alloc] init];
+                                      ipvc.delegate = self;
+                                      [self.navigationController pushViewController:ipvc animated:YES];
+                                      
+                                  }];
+    [view addAction:choosePhoto];
+    [view addAction:chooseIcon];
+    [self presentViewController:view animated:YES completion:nil];
+}
+
+- (void)presentImagePicker {
+    NSLog(@"camera clicked");
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+//    UIImage *originalInfo = info[UIImagePickerControllerOriginalImage];
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    self.currentImage = editedImage;
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
+- (void)iconsPickedImage:(IconPickerViewController *)iconPickerViewController image:(UIImage *)image name:(NSString *)name {
+    NSLog(@"%@ %@", name, image);
+    [self.navigationController popToViewController:self animated:YES];
+    self.currentImage = image;
+}
+
 #pragma mark - private methods
 - (void)onCancelButtonPress {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -92,6 +148,8 @@
     logCategory.schemaEntry = [[Entry alloc] init];
     logCategory.schemaEntry.fields = self.fields;
     logCategory.entries = [[NSMutableArray alloc] init];
+    
+    logCategory.image = self.currentImage;
     
     [[LogCollection sharedInstance].logCategories addObject:logCategory];
     [self dismissViewControllerAnimated:YES completion:nil];
