@@ -55,10 +55,7 @@
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
-    if (self.logCategory.entries.count > 0) {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(onEditCategoryButtonPress)];
-    }
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(onEditCategoryButtonPress)];
 }
 
 - (UIImage *)imageWithColor:(UIColor *)color {
@@ -140,11 +137,19 @@
 }
 
 
-
 - (void)onAddEntryButtonPress {
     EntryViewController *entryViewController = [[EntryViewController alloc] init];
     entryViewController.logCategory = self.logCategory;
+    entryViewController.entry = nil; // To make sure a new entry is created
     //[self presentViewController:entryViewController animated:YES completion:nil];
+    [self.navigationController pushViewController:entryViewController animated:YES];
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    EntryViewController *entryViewController = [[EntryViewController alloc] init];
+    entryViewController.logCategory = self.logCategory;
+    entryViewController.entry = [self.logCategory.entries objectAtIndex:(indexPath.section - 1)];
     [self.navigationController pushViewController:entryViewController animated:YES];
 }
 
