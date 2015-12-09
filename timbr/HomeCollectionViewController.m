@@ -7,7 +7,8 @@
 //
 
 #import "HomeCollectionViewController.h"
-#import "DetailsTableViewController.h"
+//#import "DetailsTableViewController.h"
+#import "DetailsViewController.h"
 #import "LogCollection.h"
 #import "LogCategory.h"
 #import "CategoryViewController.h"
@@ -83,7 +84,8 @@
     NSMutableArray *data = [self.dataArray objectAtIndex:indexPath.section];
     LogCategory *logCategory = [data objectAtIndex:indexPath.row];
 
-    DetailsTableViewController *detailsTableViewController = [[DetailsTableViewController alloc] init];
+    // DetailsTableViewController *detailsTableViewController = [[DetailsTableViewController alloc] init];
+    DetailsViewController *detailsTableViewController = [[DetailsViewController alloc] init];
     
     detailsTableViewController.logCategory = logCategory;
     

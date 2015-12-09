@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailsViewController">
+            <connections>
+                <outlet property="tableView" destination="NZL-br-z4G" id="n1o-YE-LMi"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NZL-br-z4G">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="570"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGW-Ue-66p">
+                    <rect key="frame" x="0.0" y="570" width="600" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="dgQ-O9-UXI"/>
+                    </constraints>
+                    <state key="normal" title="Add Entry"/>
+                    <connections>
+                        <action selector="onAddEntryButtonPressed:" destination="-1" eventType="touchUpInside" id="T8B-jg-fKh"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="IGW-Ue-66p" firstAttribute="top" secondItem="NZL-br-z4G" secondAttribute="bottom" id="8R6-Oy-TFv"/>
+                <constraint firstItem="NZL-br-z4G" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Beq-C8-X0z"/>
+                <constraint firstAttribute="trailing" secondItem="IGW-Ue-66p" secondAttribute="trailing" id="GOo-Wa-PNI"/>
+                <constraint firstItem="IGW-Ue-66p" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="O89-i4-Q90"/>
+                <constraint firstItem="NZL-br-z4G" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Uiw-8n-1Em"/>
+                <constraint firstAttribute="bottom" secondItem="IGW-Ue-66p" secondAttribute="bottom" id="YcS-mz-CHJ"/>
+                <constraint firstAttribute="trailing" secondItem="NZL-br-z4G" secondAttribute="trailing" id="qZi-NJ-vpU"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
