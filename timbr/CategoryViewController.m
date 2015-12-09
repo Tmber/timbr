@@ -33,6 +33,8 @@
     [self.fieldsTableView registerNib:[UINib nibWithNibName:@"FieldsTableViewCell" bundle:nil] forCellReuseIdentifier:@"FieldsTableViewCell"];
     
     self.fieldsTableView.dataSource = self;
+    self.fieldsTableView.allowsMultipleSelectionDuringEditing = NO;
+
     // Do any additional setup after loading the view from its nib.
     self.title = @"New Category";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(onCancelButtonPress)];
@@ -53,6 +55,24 @@
     // TODO find if exists else append
     [self.fields addObject:field];
     [self.fieldsTableView reloadData];
+}
+
+// Override to support conditional editing of the table view.
+// This only needs to be implemented if you are going to be returning NO
+// for some items. By default, all items are editable.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Field* field = self.fields[indexPath.row];
+        [self.fields removeObject:field];
+        [self.fieldsTableView reloadData];
+        //add code here for when you hit delete
+    }
 }
 
 #pragma mark - Table view methods
