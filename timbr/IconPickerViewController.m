@@ -41,6 +41,9 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     [self.collectionView reloadData];
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -43,6 +43,8 @@
     
     [self.collectionView setCollectionViewLayout:flowLayout];
     
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
 //    self.navigationController.navigationBar.barTintColor = [self colorFromHexString:@"FF86FF"];
 //    self.navigationController.navigationBar.translucent = NO;
 }
