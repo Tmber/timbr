@@ -217,7 +217,8 @@
             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
             [formatter setMaximumFractionDigits:2];
             [formatter setMinimumFractionDigits:2];
-            cell.valueLabel.text = [formatter stringFromNumber:field.numberValue];
+//            cell.valueLabel.text = [formatter stringFromNumber:field.numberValue];
+            cell.valueLabel.text = field.getFormattedValue;
         }
         return cell;
     }

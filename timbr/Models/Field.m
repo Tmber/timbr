@@ -26,6 +26,25 @@ NSString *const FieldTypeCurrency = @"Currency";
     }
 }
 
+- (NSString *) getFormattedValue {
+    if (self.dataType == FieldTypeNumber) {
+        return [NSString stringWithFormat:@"%@", self.numberValue];
+    } else if (self.dataType == FieldTypeDecimal) {
+        return [NSString stringWithFormat:@"%@", self.numberValue];
+    } else if (self.dataType == FieldTypeCurrency) {
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
+        NSString *numberAsString = [numberFormatter stringFromNumber:self.numberValue];
+        return [NSString stringWithFormat:@"%@",numberAsString];
+    }
+    else {
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setMaximumFractionDigits:2];
+        [formatter setMinimumFractionDigits:2];
+        return [formatter stringFromNumber:self.numberValue];
+    }
+}
+
 +(Field *) getMockFielda{
     Field *fld = [[Field alloc] init];
     srand48(time(0));
