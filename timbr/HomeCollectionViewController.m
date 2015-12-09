@@ -36,6 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+        self.title = @"My logs";
     [self.navigationItem setHidesBackButton:YES animated:YES];
 
     self.dataArray = [[NSArray alloc] initWithObjects:[LogCollection sharedInstance].logCategories, nil];
