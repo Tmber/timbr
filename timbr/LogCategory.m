@@ -12,7 +12,14 @@
 
 @implementation LogCategory
 
-// @property (nonatomic, strong) Entry *schemaEntry;
+-(id)init {
+    if ( self = [super init] ) {
+        _schemaEntry = [[Entry alloc] init];
+        _schemaEntry.fields = [[NSMutableArray alloc] init];
+        _entries = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
 
 - (void) setSchemaEntry:(Entry *)schemaEntry {
     // Set number value to zero
@@ -21,6 +28,23 @@
     }
 
     _schemaEntry = schemaEntry;
+}
+
+-(id)copyWithZone:(NSZone *)zone
+{
+    LogCategory *copy = [[LogCategory alloc] init];
+
+    copy.entries = [[NSMutableArray alloc] init];
+    for (Entry *entry in self.entries) {
+        [copy.entries addObject:[entry copyWithZone:zone]];
+    }
+
+    copy.name = [self.name copyWithZone:zone];
+    copy.schemaEntry = [self.schemaEntry copyWithZone:zone];
+    // TODO UIImage in model! Bad!
+    copy.image = self.image;
+
+    return copy;
 }
 
 +(LogCategory *)getMockLog{

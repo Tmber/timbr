@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LogCategory.h"
+
+@class CategoryViewController;
+
+@protocol CategoryViewControllerDelegate <NSObject>
+
+- (void)categoryViewControllerLogCategoryUpdated:(LogCategory *)logCategory;
+
+@end
 
 @interface CategoryViewController : UIViewController
+
+@property (strong, nonatomic) LogCategory *logCategory;
+@property (weak, nonatomic) id<CategoryViewControllerDelegate> delegate;
 
 @end

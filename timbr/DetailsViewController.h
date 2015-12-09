@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "LogCategory.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "CategoryViewController.h"
 
-@interface DetailsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface DetailsViewController : UIViewController <CategoryViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (strong, nonatomic) LogCategory *logCategory;
 

@@ -19,8 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *fieldsTableView;
 @property (weak, nonatomic) IBOutlet UITextField *categoryNameTextBox;
 
-@property (strong, nonatomic) NSMutableArray *fields;
-@property (strong, nonatomic) UIImage *currentImage;
+@property (strong, nonatomic) LogCategory *workingLogCategory;
 
 @end
 
@@ -29,12 +28,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.fields = [[NSMutableArray alloc] init];
+    if (self.logCategory == nil) {
+        self.workingLogCategory = [[LogCategory alloc] init];
+        self.title = @"New Category";
+    } else {
+        self.workingLogCategory = [self.logCategory copyWithZone:nil];
+        self.categoryNameTextBox.text = self.workingLogCategory.name;
+        self.title = @"Edit Category";
+    }
+
     [self.fieldsTableView registerNib:[UINib nibWithNibName:@"FieldsTableViewCell" bundle:nil] forCellReuseIdentifier:@"FieldsTableViewCell"];
     
     self.fieldsTableView.dataSource = self;
-    // Do any additional setup after loading the view from its nib.
-    self.title = @"New Category";
+
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(onCancelButtonPress)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(onSaveButtonPress)];
     
@@ -49,37 +55,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)fieldViewControllerFieldUpdated:(Field *)field {
-    // TODO find if exists else append
-    [self.fields addObject:field];
-    [self.fieldsTableView reloadData];
-}
-
 #pragma mark - Table view methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-        NSLog(@"was called2");
-    return self.fields.count;
+    return self.workingLogCategory.schemaEntry.fields.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"was called");
     FieldsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FieldsTableViewCell"];
     
-    cell.field = self.fields[indexPath.row];
+    cell.field = self.workingLogCategory.schemaEntry.fields[indexPath.row];
     cell.delegate = self;
     
     return cell;
-}
-
-
-- (IBAction)onAddFieldButtonPress:(id)sender {
-    FieldViewController *fvc = [[FieldViewController alloc] init];
-    fvc.delegate = self;
-    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:fvc];
-
-    [self.fieldsTableView reloadData];
-    [self presentViewController:nvc animated:YES completion:nil];
 }
 
 - (IBAction)onSetImageButtonPress:(id)sender {
@@ -128,7 +116,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 //    UIImage *originalInfo = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    self.currentImage = editedImage;
+    self.workingLogCategory.image = editedImage;
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
@@ -138,7 +126,7 @@
     NSLog(@"%@ %@", name, image);
 //    [self.navigationController popToViewController:self animated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
-    self.currentImage = image;
+    self.workingLogCategory.image = image;
 }
 
 #pragma mark - private methods
@@ -147,21 +135,51 @@
 }
 
 - (void)onSaveButtonPress {
-    LogCategory *logCategory = [[LogCategory alloc] init];
+    self.workingLogCategory.name = self.categoryNameTextBox.text;
     
-    logCategory.name = self.categoryNameTextBox.text;
-    logCategory.schemaEntry = [[Entry alloc] init];
-    logCategory.schemaEntry.fields = self.fields;
-    logCategory.entries = [[NSMutableArray alloc] init];
+    if (self.logCategory == nil) {
+        [[LogCollection sharedInstance].logCategories addObject:self.workingLogCategory];
+    } else {
+        NSLog(@"onSaveButtonPress %@", self.workingLogCategory.name);
+        NSUInteger index = [[LogCollection sharedInstance].logCategories indexOfObject:self.logCategory];
+        [[LogCollection sharedInstance].logCategories replaceObjectAtIndex:index withObject:self.workingLogCategory];
+    }
     
-    logCategory.image = self.currentImage;
+    [self.delegate categoryViewControllerLogCategoryUpdated:self.workingLogCategory];
     
-    [[LogCollection sharedInstance].logCategories addObject:logCategory];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)onAddFieldButtonPress:(id)sender {
+    FieldViewController *fvc = [[FieldViewController alloc] init];
+    fvc.delegate = self;
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:fvc];
+    
+    [self.fieldsTableView reloadData]; // Does this do anything?
+    [self presentViewController:nvc animated:YES completion:nil];
+}
+
+- (void)fieldViewControllerFieldUpdated:(Field *)field {
+    [self.workingLogCategory.schemaEntry.fields addObject:field];
+    
+    for (Entry *entry in self.workingLogCategory.entries) {
+        [entry.fields addObject:[field copyWithZone:nil]];
+    }
+    
+    [self.fieldsTableView reloadData];
+}
+
 - (void)fieldsTableViewCellDeletePressed:(FieldsTableViewCell *)cell {
-    [self.fields removeObject:cell.field];
+    [self.workingLogCategory.schemaEntry.fields removeObject:cell.field];
+    for (Entry *entry in self.workingLogCategory.entries) {
+        Field *toRemove = nil;
+        for (Field *field in entry.fields) {
+            if (field.name == cell.field.name) {
+                toRemove = field;
+            }
+        }
+        [entry.fields removeObject:toRemove];
+    }
     [self.fieldsTableView reloadData];
 }
 

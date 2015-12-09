@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "Entry.h"
 
-@interface LogCategory : NSObject
+@interface LogCategory : NSObject<NSCopying>
 
 @property (nonatomic, strong) NSMutableArray *entries;
 @property (nonatomic, strong) NSString *name;

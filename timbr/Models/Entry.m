@@ -14,12 +14,11 @@
 -(id)copyWithZone:(NSZone *)zone
 {
     Entry *copy = [[Entry alloc] init];
+
     copy.fields = [[NSMutableArray alloc] init];
-    
     for (Field *field in self.fields) {
         [copy.fields addObject:[field copyWithZone:zone]];
     }
-
     return copy;
 }
 
