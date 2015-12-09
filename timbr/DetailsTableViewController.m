@@ -196,7 +196,8 @@
         }
 
         // http://stackoverflow.com/a/7654733/566878
-        return [names componentsJoinedByString: @", "];
+//        return [names componentsJoinedByString: @", "];
+        return nil;
     }
     else {
         return [NSString stringWithFormat:@"Entry #%ld", (long)section];

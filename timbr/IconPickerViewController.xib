@@ -15,9 +15,12 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minimal background" translatesAutoresizingMaskIntoConstraints="NO" id="rbk-0y-pgc">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Nwr-uA-prE">
                     <rect key="frame" x="8" y="0.0" width="584" height="600"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="quf-XY-BJe">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -28,11 +31,18 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="rbk-0y-pgc" secondAttribute="bottom" id="18h-kh-VLE"/>
                 <constraint firstItem="Nwr-uA-prE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="907-pF-HNy"/>
                 <constraint firstAttribute="trailing" secondItem="Nwr-uA-prE" secondAttribute="trailing" constant="8" id="AKY-ri-p8j"/>
+                <constraint firstItem="rbk-0y-pgc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="H5j-Iy-R4X"/>
+                <constraint firstAttribute="trailing" secondItem="rbk-0y-pgc" secondAttribute="trailing" id="PXb-gb-Ap0"/>
                 <constraint firstAttribute="bottom" secondItem="Nwr-uA-prE" secondAttribute="bottom" id="TIq-g1-VDy"/>
+                <constraint firstItem="rbk-0y-pgc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iYo-EK-Be0"/>
                 <constraint firstItem="Nwr-uA-prE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nJ3-qe-W2b"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="minimal background" width="640" height="1136"/>
+    </resources>
 </document>

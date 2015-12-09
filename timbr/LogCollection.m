@@ -17,7 +17,9 @@
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
         sharedInstance.logCategories = [[NSMutableArray alloc] init];
-        [sharedInstance.logCategories addObject:[LogCategory getMockLog]];
+        for (int i = 0; i < 10; i++) {
+            [sharedInstance.logCategories addObject:[LogCategory getMockLog]];
+        }
     });
     
     return sharedInstance;
