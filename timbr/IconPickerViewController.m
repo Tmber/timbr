@@ -22,7 +22,7 @@
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"iconPickerCell"];
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [flowLayout setItemSize:CGSizeMake(125, 125)];
+    [flowLayout setItemSize:CGSizeMake(110, 110)];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     
     [self.collectionView setCollectionViewLayout:flowLayout];
