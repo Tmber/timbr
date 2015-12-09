@@ -175,7 +175,9 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self createUpdateEntry:[self.logCategory.entries objectAtIndex:(indexPath.section - 1)]];
+    if (indexPath.section > 0) {
+        [self createUpdateEntry:[self.logCategory.entries objectAtIndex:(indexPath.section - 1)]];
+    }
 }
 
 -(void)createUpdateEntry:(Entry *)entry {
