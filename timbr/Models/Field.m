@@ -40,20 +40,20 @@ NSString *const FieldTypeCurrency = @"Currency";
 
 - (NSString *) getFormattedValue {
     if (self.dataType == FieldTypeNumber) {
-        return [NSString stringWithFormat:@"%@", self.numberValue];
+        return [NSString stringWithFormat:@"%@", (self.numberValue != nil) ? self.numberValue : @0];
     } else if (self.dataType == FieldTypeDecimal) {
-        return [NSString stringWithFormat:@"%@", self.numberValue];
+        return [NSString stringWithFormat:@"%@", (self.numberValue != nil) ? self.numberValue : @0];
     } else if (self.dataType == FieldTypeCurrency) {
         NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
         [numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
-        NSString *numberAsString = [numberFormatter stringFromNumber:self.numberValue];
+        NSString *numberAsString = [numberFormatter stringFromNumber:(self.numberValue != nil) ? self.numberValue : @0];
         return [NSString stringWithFormat:@"%@",numberAsString];
     }
     else {
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         [formatter setMaximumFractionDigits:2];
         [formatter setMinimumFractionDigits:2];
-        return [formatter stringFromNumber:self.numberValue];
+        return [formatter stringFromNumber: (self.numberValue != nil) ? self.numberValue : @0];
     }
 }
 
