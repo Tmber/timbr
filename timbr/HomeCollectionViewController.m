@@ -7,7 +7,6 @@
 //
 
 #import "HomeCollectionViewController.h"
-//#import "DetailsTableViewController.h"
 #import "DetailsViewController.h"
 #import "LogCollection.h"
 #import "LogCategory.h"
@@ -127,14 +126,12 @@
 {
     NSMutableArray *data = [self.dataArray objectAtIndex:indexPath.section];
     LogCategory *logCategory = [data objectAtIndex:indexPath.row];
-
-    // DetailsTableViewController *detailsTableViewController = [[DetailsTableViewController alloc] init];
-    DetailsViewController *detailsTableViewController = [[DetailsViewController alloc] init];
     
-    detailsTableViewController.logCategory = logCategory;
+    DetailsViewController *dvc = [[DetailsViewController alloc] init];
     
-    // TODO detailsTableViewController.logCategory = figure out from sender
-    [self.navigationController pushViewController:detailsTableViewController animated:YES];
+    dvc.logCategory = logCategory;
+    
+    [self.navigationController pushViewController:dvc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

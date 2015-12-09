@@ -77,7 +77,6 @@
         
         dvc.logCategory = self.logCategory;
         
-        // TODO detailsTableViewController.logCategory = figure out from sender
         [self.navigationController pushViewController:dvc animated:YES];
     }
     else {

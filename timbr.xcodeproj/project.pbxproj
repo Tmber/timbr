@@ -20,8 +20,6 @@
 		7A8582FA1BFEDA9C001D96F5 /* LogCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8582F91BFEDA9C001D96F5 /* LogCategory.m */; };
 		7A8583111C00247C001D96F5 /* DetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A85830F1C00247C001D96F5 /* DetailsTableViewCell.m */; };
 		7A8583121C00247C001D96F5 /* DetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A8583101C00247C001D96F5 /* DetailsTableViewCell.xib */; };
-		7A85831B1C004AC5001D96F5 /* DetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8583191C004AC5001D96F5 /* DetailsTableViewController.m */; };
-		7A85831C1C004AC5001D96F5 /* DetailsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A85831A1C004AC5001D96F5 /* DetailsTableViewController.xib */; };
 		EBE0724F6512330E95F9BEBA /* libPods-timbr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C77725C7DA68250F9E352FFE /* libPods-timbr.a */; };
 		F6967C0A1C10068800ED1765 /* EntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6967C081C10068800ED1765 /* EntryViewController.m */; };
 		F6967C0B1C10068800ED1765 /* EntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6967C091C10068800ED1765 /* EntryViewController.xib */; };
@@ -72,9 +70,6 @@
 		7A85830E1C00247C001D96F5 /* DetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsTableViewCell.h; sourceTree = "<group>"; };
 		7A85830F1C00247C001D96F5 /* DetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsTableViewCell.m; sourceTree = "<group>"; };
 		7A8583101C00247C001D96F5 /* DetailsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsTableViewCell.xib; sourceTree = "<group>"; };
-		7A8583181C004AC5001D96F5 /* DetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsTableViewController.h; sourceTree = "<group>"; };
-		7A8583191C004AC5001D96F5 /* DetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsTableViewController.m; sourceTree = "<group>"; };
-		7A85831A1C004AC5001D96F5 /* DetailsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsTableViewController.xib; sourceTree = "<group>"; };
 		C77725C7DA68250F9E352FFE /* libPods-timbr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-timbr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6967C071C10068800ED1765 /* EntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryViewController.h; sourceTree = "<group>"; };
 		F6967C081C10068800ED1765 /* EntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryViewController.m; sourceTree = "<group>"; };
@@ -204,9 +199,6 @@
 				F9AB7E4C1C0E4B9E005BB778 /* LoginViewController.m */,
 				F9AB7E4D1C0E4B9E005BB778 /* LoginViewController.h */,
 				F9AB7E4E1C0E4B9E005BB778 /* LoginViewController.xib */,
-				7A8583181C004AC5001D96F5 /* DetailsTableViewController.h */,
-				7A8583191C004AC5001D96F5 /* DetailsTableViewController.m */,
-				7A85831A1C004AC5001D96F5 /* DetailsTableViewController.xib */,
 				F6DC76A71C0EB81400DBD2BD /* CategoryViewController.h */,
 				F6DC76A81C0EB81400DBD2BD /* CategoryViewController.m */,
 				F6DC76A91C0EB81400DBD2BD /* CategoryViewController.xib */,
@@ -317,7 +309,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6967C171C1165B100ED1765 /* FieldDataTableViewCell.xib in Resources */,
-				7A85831C1C004AC5001D96F5 /* DetailsTableViewController.xib in Resources */,
 				F980FBD71C16BE3D0003734D /* filenames.txt in Resources */,
 				7A8582C21BFE797A001D96F5 /* LaunchScreen.storyboard in Resources */,
 				F980FBD51C16B87A0003734D /* IconPickerViewController.xib in Resources */,
@@ -400,7 +391,6 @@
 				7A8582FA1BFEDA9C001D96F5 /* LogCategory.m in Sources */,
 				7A8582F71BFED7FE001D96F5 /* Entry.m in Sources */,
 				7A23FF141C03DB6C009002B8 /* ChartTableViewCell.m in Sources */,
-				7A85831B1C004AC5001D96F5 /* DetailsTableViewController.m in Sources */,
 				F9AB7E3A1C0D0AA3005BB778 /* Field.m in Sources */,
 				F9AB7E4F1C0E4B9E005BB778 /* HomeCollectionViewController.m in Sources */,
 				F6967C1E1C17D8D200ED1765 /* DetailsViewController.m in Sources */,
