@@ -41,6 +41,8 @@
     // A little trick for removing the cell separators
     self.tableView.tableFooterView = [UIView new];
     
+    self.tableView.allowsSelection = NO;
+    
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     if (self.logCategory.entries.count > 0) {
@@ -211,10 +213,11 @@
         }
         
         // http://stackoverflow.com/a/7654733/566878
-        return [names componentsJoinedByString: @", "];
+//        return [names componentsJoinedByString: @", "];
+        return nil;
     }
     else {
-        return [NSString stringWithFormat:@"Entry #%ld", (long)section];
+        return [NSString stringWithFormat:@"Entry %ld", (long)section];
     }
 }
 
@@ -224,6 +227,22 @@
     }
     else {
         return self.tableView.estimatedRowHeight;
+    }
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)];
+    if (section == 0)
+        return [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    else {
+        [headerView setBackgroundColor:[self colorFromHexString:@"#F5F5F5"]];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, tableView.bounds.size.width - 10, 20)];
+        label.text = [NSString stringWithFormat:@"Entry %ld", (long)section];
+        label.textColor = [self colorFromHexString:@"#999999"];
+        label.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+        [headerView addSubview:label];
+        return headerView;
     }
 }
 
