@@ -17,6 +17,7 @@
 
 @interface DetailsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *addEntry;
 
 @end
 
@@ -48,14 +49,30 @@
     
     self.title = self.logCategory.name;
     
+//    [self.addEntry setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:131.0 / 255.0 green:52.0 / 255.0 blue:222.0 / 255.0 alpha:1.00f]] forState:UIControlStateNormal];
+//    [self.addEntry setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:104.0 / 255.0 green:41.0 / 255.0 blue:177.0 / 255.0 alpha:1.00f]] forState:UIControlStateHighlighted];
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     if (self.logCategory.entries.count > 0) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add Entry" style:UIBarButtonItemStylePlain target:self action:@selector(onAddEntryButtonPress)];
     }
+}
+
+- (UIImage *)imageWithColor:(UIColor *)color {
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
@@ -111,19 +128,6 @@
 - (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
 {
     return -self.tableView.tableHeaderView.frame.size.height/2.0f;
-}
-
-- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
-{
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0f], NSForegroundColorAttributeName: [UIColor colorWithRed:131.0 / 255.0 green:52.0 / 255.0 blue:222.0 / 255.0 alpha:1.0f]};
-    
-    return [[NSAttributedString alloc] initWithString:@"Add Entry" attributes:attributes];
-}
-
-
-- (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView
-{
-    [self onAddEntryButtonPress];
 }
 
 

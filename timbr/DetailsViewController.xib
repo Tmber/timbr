@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailsViewController">
             <connections>
+                <outlet property="addEntry" destination="IGW-Ue-66p" id="W94-Y6-r01"/>
                 <outlet property="tableView" destination="NZL-br-z4G" id="n1o-YE-LMi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,10 +22,13 @@
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGW-Ue-66p">
                     <rect key="frame" x="0.0" y="570" width="600" height="30"/>
+                    <color key="backgroundColor" red="0.51372549019607838" green="0.20392156862745098" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="dgQ-O9-UXI"/>
                     </constraints>
-                    <state key="normal" title="Add Entry"/>
+                    <state key="normal" title="Add Entry">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="onAddEntryButtonPressed:" destination="-1" eventType="touchUpInside" id="T8B-jg-fKh"/>
                     </connections>
