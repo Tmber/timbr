@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7A23FF141C03DB6C009002B8 /* ChartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A23FF121C03DB6C009002B8 /* ChartTableViewCell.m */; };
 		7A23FF151C03DB6C009002B8 /* ChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A23FF131C03DB6C009002B8 /* ChartTableViewCell.xib */; };
+		7A5767781C18138000B3536D /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5767771C18138000B3536D /* UIViewController+BackButtonHandler.m */; };
 		7A8582B11BFE797A001D96F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8582B01BFE797A001D96F5 /* main.m */; };
 		7A8582B41BFE797A001D96F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8582B31BFE797A001D96F5 /* AppDelegate.m */; };
 		7A8582B71BFE797A001D96F5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8582B61BFE797A001D96F5 /* ViewController.m */; };
@@ -52,6 +53,8 @@
 		7A23FF111C03DB6C009002B8 /* ChartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartTableViewCell.h; sourceTree = "<group>"; };
 		7A23FF121C03DB6C009002B8 /* ChartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartTableViewCell.m; sourceTree = "<group>"; };
 		7A23FF131C03DB6C009002B8 /* ChartTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartTableViewCell.xib; sourceTree = "<group>"; };
+		7A5767761C18138000B3536D /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
+		7A5767771C18138000B3536D /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
 		7A8582AC1BFE797A001D96F5 /* timbr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timbr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A8582B01BFE797A001D96F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7A8582B21BFE797A001D96F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -157,6 +160,8 @@
 				7A8582B31BFE797A001D96F5 /* AppDelegate.m */,
 				7A8582B51BFE797A001D96F5 /* ViewController.h */,
 				7A8582B61BFE797A001D96F5 /* ViewController.m */,
+				7A5767761C18138000B3536D /* UIViewController+BackButtonHandler.h */,
+				7A5767771C18138000B3536D /* UIViewController+BackButtonHandler.m */,
 				7A8582B81BFE797A001D96F5 /* Main.storyboard */,
 				7A8582BE1BFE797A001D96F5 /* Assets.xcassets */,
 				7A8582C01BFE797A001D96F5 /* LaunchScreen.storyboard */,
@@ -393,6 +398,7 @@
 				7A23FF141C03DB6C009002B8 /* ChartTableViewCell.m in Sources */,
 				F9AB7E3A1C0D0AA3005BB778 /* Field.m in Sources */,
 				F9AB7E4F1C0E4B9E005BB778 /* HomeCollectionViewController.m in Sources */,
+				7A5767781C18138000B3536D /* UIViewController+BackButtonHandler.m in Sources */,
 				F6967C1E1C17D8D200ED1765 /* DetailsViewController.m in Sources */,
 				7A8582B71BFE797A001D96F5 /* ViewController.m in Sources */,
 				F9AB7E511C0E4B9E005BB778 /* LoginViewController.m in Sources */,

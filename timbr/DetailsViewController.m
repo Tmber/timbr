@@ -13,6 +13,7 @@
 #import "Entry.h"
 #import "Field.h"
 #import "EntryViewController.h"
+#import "UIViewController+BackButtonHandler.h"
 
 
 @interface DetailsViewController ()
@@ -65,19 +66,26 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add Entry" style:UIBarButtonItemStylePlain target:self action:@selector(onAddEntryButtonPress)];
     }
     
-    [self overrideBack];
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
 
 }
+
+-(BOOL) navigationShouldPopOnBackButton
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    return NO;
+}
+
 
 -(void) overrideBack{
     
     UIButton *transparentButton = [[UIButton alloc] init];
-    [transparentButton setFrame:CGRectMake(0,0, 70, 60)];
+    [transparentButton setFrame:CGRectMake(0,0, 120, 60)];
     [transparentButton setBackgroundColor:[UIColor clearColor]];
     [transparentButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.navigationBar addSubview:transparentButton];
-    
-    
 }
 
 -(void)backAction:(UIBarButtonItem *)sender {
