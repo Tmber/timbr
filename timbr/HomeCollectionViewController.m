@@ -13,6 +13,7 @@
 #import "LogCategory.h"
 #import "CategoryViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "EntryViewController.h"
 
 @interface HomeCollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
@@ -28,10 +29,15 @@
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:categoryViewController];
     
     [self presentViewController:nvc animated:YES completion:nil];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
+    self.navigationItem.leftBarButtonItem = nil;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationItem setHidesBackButton:YES animated:YES];
 
     self.dataArray = [[NSArray alloc] initWithObjects:[LogCollection sharedInstance].logCategories, nil];
     UINib *cellNib = [UINib nibWithNibName:@"HomeCollectionViewCell" bundle:nil];
@@ -83,9 +89,30 @@
     plus.layer.borderWidth = 1;
     plus.layer.cornerRadius = 5;
     plus.layer.masksToBounds = YES;
+    [plus addTarget:self action:@selector(myClickEvent:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
 }
+
+- (IBAction)myClickEvent:(id)sender {
+    
+    UICollectionViewCell *cell = (UICollectionViewCell*)[[sender superview] superview];
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    
+    if (indexPath == nil) {
+        assert(false);
+        return;
+    }
+    else {
+        NSMutableArray *data = [self.dataArray objectAtIndex:indexPath.section];
+        LogCategory *logCategory = [data objectAtIndex:indexPath.row];
+        EntryViewController *entryViewController = [[EntryViewController alloc] init];
+        entryViewController.logCategory = logCategory;
+        //[self presentViewController:entryViewController animated:YES completion:nil];
+        [self.navigationController pushViewController:entryViewController animated:YES];
+    }
+}
+
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return [self.dataArray count];

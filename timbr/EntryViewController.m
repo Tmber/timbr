@@ -8,6 +8,8 @@
 
 #import "EntryViewController.h"
 #import "FieldDataTableViewCell.h"
+#import "HomeCollectionViewController.h"
+#import "DetailsViewController.h"
 
 @interface EntryViewController () <UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -69,7 +71,18 @@
     [self.logCategory.entries addObject:self.entry];
     
     //[self dismissViewControllerAnimated:YES completion:nil];
-    [self.navigationController popViewControllerAnimated:YES];
+    UIViewController *vc = [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
+    if (vc.class == HomeCollectionViewController.class) {
+        DetailsViewController *dvc = [[DetailsViewController alloc] init];
+        
+        dvc.logCategory = self.logCategory;
+        
+        // TODO detailsTableViewController.logCategory = figure out from sender
+        [self.navigationController pushViewController:dvc animated:YES];
+    }
+    else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 /*

@@ -64,7 +64,26 @@
     if (self.logCategory.entries.count > 0) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add Entry" style:UIBarButtonItemStylePlain target:self action:@selector(onAddEntryButtonPress)];
     }
+    
+    [self overrideBack];
+
 }
+
+-(void) overrideBack{
+    
+    UIButton *transparentButton = [[UIButton alloc] init];
+    [transparentButton setFrame:CGRectMake(0,0, 70, 60)];
+    [transparentButton setBackgroundColor:[UIColor clearColor]];
+    [transparentButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationController.navigationBar addSubview:transparentButton];
+    
+    
+}
+
+-(void)backAction:(UIBarButtonItem *)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 
 - (UIImage *)imageWithColor:(UIColor *)color {
     CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
