@@ -34,7 +34,7 @@
                 </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2jz-uC-Maq">
                     <rect key="frame" x="0.0" y="550" width="600" height="50"/>
-                    <color key="backgroundColor" red="0.43137254901960786" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.51372549019607838" green="0.20392156862745098" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Gsu-KS-v3Z"/>
                     </constraints>
