@@ -102,12 +102,16 @@
                                   handler:^(UIAlertAction * action)
                                   {
                                       IconPickerViewController *ipvc = [[IconPickerViewController alloc] init];
+                                      UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:ipvc];
                                       ipvc.delegate = self;
-                                      [self.navigationController pushViewController:ipvc animated:YES];
+//                                      self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:nil action:nil];
+                                      [self presentViewController:nvc animated:YES completion:nil];
+//                                      [self.navigationController pushViewController:ipvc animated:YES];
                                       
                                   }];
     [view addAction:choosePhoto];
     [view addAction:chooseIcon];
+    [view addAction: [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:view animated:YES completion:nil];
 }
 
@@ -132,7 +136,8 @@
 
 - (void)iconsPickedImage:(IconPickerViewController *)iconPickerViewController image:(UIImage *)image name:(NSString *)name {
     NSLog(@"%@ %@", name, image);
-    [self.navigationController popToViewController:self animated:YES];
+//    [self.navigationController popToViewController:self animated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     self.currentImage = image;
 }
 

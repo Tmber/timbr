@@ -7,12 +7,14 @@
 //
 
 #import "HomeCollectionViewController.h"
-#import "DetailsTableViewController.h"
+//#import "DetailsTableViewController.h"
+#import "DetailsViewController.h"
 #import "LogCollection.h"
 #import "LogCategory.h"
 #import "CategoryViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
-@interface HomeCollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface HomeCollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *dataArray;
 @end
@@ -36,10 +38,13 @@
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"homeCell"];
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [flowLayout setItemSize:CGSizeMake(125, 125)];
+    [flowLayout setItemSize:CGSizeMake(110, 110)];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     
     [self.collectionView setCollectionViewLayout:flowLayout];
+    
+//    self.navigationController.navigationBar.barTintColor = [self colorFromHexString:@"FF86FF"];
+//    self.navigationController.navigationBar.translucent = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -66,6 +71,17 @@
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:10];
     imageView.image = logCategory.image;
     
+    cell.layer.borderColor = [[self colorFromHexString:@"#DEDEDE"] CGColor];
+    cell.layer.borderWidth = 1;
+    cell.layer.cornerRadius = 5;
+    cell.layer.masksToBounds = YES;
+    
+    UIButton *plus = (UIButton *)[cell viewWithTag:15];
+    plus.layer.borderColor = [[self colorFromHexString:@"#DEDEDE"] CGColor];
+    plus.layer.borderWidth = 1;
+    plus.layer.cornerRadius = 5;
+    plus.layer.masksToBounds = YES;
+    
     return cell;
 }
 
@@ -83,7 +99,8 @@
     NSMutableArray *data = [self.dataArray objectAtIndex:indexPath.section];
     LogCategory *logCategory = [data objectAtIndex:indexPath.row];
 
-    DetailsTableViewController *detailsTableViewController = [[DetailsTableViewController alloc] init];
+    // DetailsTableViewController *detailsTableViewController = [[DetailsTableViewController alloc] init];
+    DetailsViewController *detailsTableViewController = [[DetailsViewController alloc] init];
     
     detailsTableViewController.logCategory = logCategory;
     
@@ -94,6 +111,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - private methods
+- (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
 /*
