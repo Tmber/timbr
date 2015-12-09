@@ -27,6 +27,11 @@
     
     [self.collectionView setCollectionViewLayout:flowLayout];
     
+    self.navigationController.hidesBarsOnSwipe = YES;
+    self.navigationItem.title = @"Select Icon";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(onCancel:)];
+    self.navigationItem.leftBarButtonItem.tintColor = [self colorFromHexString:@"#8334DE"];
+    
     NSString* filePath = @"filenames";
     NSString* fileRoot = [[NSBundle mainBundle]
                            pathForResource:filePath ofType:@"txt"];
@@ -42,6 +47,10 @@
     [super viewWillAppear:animated];
     
     [self.collectionView reloadData];
+}
+
+- (IBAction)onCancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -81,6 +90,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - private methods
+- (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
 /*

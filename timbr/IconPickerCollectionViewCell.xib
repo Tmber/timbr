@@ -13,17 +13,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" tag="50" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xwi-tZ-HfU">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                    <imageView userInteractionEnabled="NO" alpha="0.5" tag="50" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xwi-tZ-HfU">
+                        <rect key="frame" x="16" y="16" width="168" height="168"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstItem="xwi-tZ-HfU" firstAttribute="leading" secondItem="a5F-ec-n9u" secondAttribute="leading" id="60A-SI-41h"/>
-                <constraint firstAttribute="trailing" secondItem="xwi-tZ-HfU" secondAttribute="trailing" id="B0m-K4-H0U"/>
-                <constraint firstAttribute="bottom" secondItem="xwi-tZ-HfU" secondAttribute="bottom" id="BZS-ia-dEL"/>
-                <constraint firstItem="xwi-tZ-HfU" firstAttribute="top" secondItem="a5F-ec-n9u" secondAttribute="top" id="rZa-me-URW"/>
+                <constraint firstItem="xwi-tZ-HfU" firstAttribute="leading" secondItem="a5F-ec-n9u" secondAttribute="leading" constant="16" id="60A-SI-41h"/>
+                <constraint firstAttribute="trailing" secondItem="xwi-tZ-HfU" secondAttribute="trailing" constant="16" id="B0m-K4-H0U"/>
+                <constraint firstAttribute="bottom" secondItem="xwi-tZ-HfU" secondAttribute="bottom" constant="16" id="BZS-ia-dEL"/>
+                <constraint firstItem="xwi-tZ-HfU" firstAttribute="top" secondItem="a5F-ec-n9u" secondAttribute="top" constant="16" id="rZa-me-URW"/>
             </constraints>
             <point key="canvasLocation" x="311" y="60"/>
         </collectionViewCell>
