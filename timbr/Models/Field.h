@@ -13,7 +13,7 @@ FOUNDATION_EXPORT NSString *const FieldTypeNumber;
 FOUNDATION_EXPORT NSString *const FieldTypeDecimal;
 FOUNDATION_EXPORT NSString *const FieldTypeCurrency;
 
-@interface Field : NSObject
+@interface Field : NSObject <NSCopying>
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSNumber *numberValue;

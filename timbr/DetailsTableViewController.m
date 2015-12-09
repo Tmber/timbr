@@ -39,6 +39,7 @@
 - (void)onAddEntryButtonPress {
     EntryViewController *entryViewController = [[EntryViewController alloc] init];
     entryViewController.logCategory = self.logCategory;
+    entryViewController.entry = nil; // To make sure a new entry is created
     //[self presentViewController:entryViewController animated:YES completion:nil];
     [self.navigationController pushViewController:entryViewController animated:YES];
 }
@@ -163,21 +164,22 @@
 }
 */
 
-/*
+
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+    // DetailViewController *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
     
     // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    EntryViewController *entryViewController = [[EntryViewController alloc] init];
+    entryViewController.logCategory = self.logCategory;
+    entryViewController.entry = [self.logCategory.entries objectAtIndex:(indexPath.section - 1)];
+    [self.navigationController pushViewController:entryViewController animated:YES];
 }
-*/
+
 
 /*
 #pragma mark - Navigation

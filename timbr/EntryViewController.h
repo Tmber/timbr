@@ -12,5 +12,6 @@
 @interface EntryViewController : UIViewController
 
 @property (strong, nonatomic) LogCategory *logCategory;
+@property (strong, nonatomic) Entry *entry;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Entry : NSObject
+@interface Entry : NSObject <NSCopying>
 
 @property (nonatomic, strong) NSMutableArray *fields;
 

@@ -37,9 +37,13 @@
     
     self.fieldNameLabel.text = self.field.name;
     if (self.field.numberValue) {
-        self.fieldValueTextField.text = [NSString stringWithFormat:@"%@", self.field.numberValue];
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setMaximumFractionDigits:2];
+        [formatter setMinimumFractionDigits:2];
+        self.fieldValueTextField.text = [formatter stringFromNumber:self.field.numberValue];
     }
     
+    self.fieldValueTextField.textAlignment = NSTextAlignmentRight;
     [self.fieldValueTextField setKeyboardType:[self.field getKeyboardType]];
 }
 

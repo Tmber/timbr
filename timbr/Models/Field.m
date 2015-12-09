@@ -26,6 +26,18 @@ NSString *const FieldTypeCurrency = @"Currency";
     }
 }
 
+-(id)copyWithZone:(NSZone *)zone
+{
+    Field *copy = [[Field alloc] init];
+    copy.name = [self.name copyWithZone:zone];
+    copy.numberValue = [self.numberValue copyWithZone:zone];
+    copy.dataType = [self.dataType copyWithZone:zone];
+    copy.dateValue = [self.dateValue copyWithZone:zone];
+    copy.stringValue = [self.stringValue copyWithZone:zone];
+
+    return copy;
+}
+
 +(Field *) getMockFielda{
     Field *fld = [[Field alloc] init];
     srand48(time(0));

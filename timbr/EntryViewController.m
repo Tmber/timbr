@@ -11,7 +11,8 @@
 
 @interface EntryViewController () <UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) Entry *entry;
+@property (strong, nonatomic) Entry *workingEntry;
+
 @end
 
 @implementation EntryViewController
@@ -19,14 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // TODO Refactor below code to "copy constructor"
-    self.entry = [[Entry alloc] init];
-    self.entry.fields = [[NSMutableArray alloc] init];
-    for (Field *field in self.logCategory.schemaEntry.fields) {
-        Field *newField = [[Field alloc] init];
-        newField.name = field.name;
-        newField.dataType = field.dataType;
-        [self.entry.fields addObject:newField];
+    if (self.entry == nil) {
+        self.workingEntry = [self.logCategory.schemaEntry copyWithZone:nil];
+    } else {
+        self.workingEntry = [self.entry copyWithZone:nil];
     }
     
     [self.tableView registerNib:[UINib nibWithNibName:@"FieldDataTableViewCell" bundle:nil] forCellReuseIdentifier:@"FieldDataTableViewCell"];
@@ -48,13 +45,13 @@
 #pragma mark - Table view methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.entry.fields.count;
+    return self.workingEntry.fields.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FieldDataTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FieldDataTableViewCell"];
     
-    cell.field = self.entry.fields[indexPath.row];
+    cell.field = self.workingEntry.fields[indexPath.row];
     
     return cell;
 }
@@ -66,8 +63,13 @@
 }
 
 - (void)onSaveButtonPress {
-    [self.logCategory.entries addObject:self.entry];
-    
+    if (self.entry == nil) {
+        [self.logCategory.entries addObject:self.workingEntry];
+    } else {
+        NSInteger index = [self.logCategory.entries indexOfObject:self.entry];
+        [self.logCategory.entries replaceObjectAtIndex:index withObject:self.workingEntry];
+    }
+
     //[self dismissViewControllerAnimated:YES completion:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
