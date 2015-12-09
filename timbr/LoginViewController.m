@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.title = @"Welcome";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,8 +66,7 @@
                                             [defaults synchronize];
                                             // Do stuff after successful login.
                                             HomeCollectionViewController *hvc = [[HomeCollectionViewController alloc] init];
-//                                            [self presentViewController:hvc animated:YES completion:nil];
-                                            [self.navigationController pushViewController:hvc animated:YES];
+                                            [self.navigationController setViewControllers:@[hvc] animated:YES];
                                         } else {
                                             // The login failed. Check error to see why.
                                             NSString *errorString = [error userInfo][@"error"];   // Show the errorString somewhere and let the user try again.

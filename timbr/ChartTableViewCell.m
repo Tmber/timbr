@@ -73,10 +73,10 @@
         
         lineChart.legendStyle = PNLegendItemStyleStacked;
         lineChart.legendFont = [UIFont boldSystemFontOfSize:12.0f];
-        lineChart.legendFontColor = [UIColor redColor];
+        lineChart.legendFontColor = [UIColor grayColor];
         
         UIView *legend = [lineChart getLegendWithMaxWidth:320];
-        [legend setFrame:CGRectMake(30, 30, legend.frame.size.width, legend.frame.size.width)];
+        [legend setFrame:CGRectMake(30, 10, legend.frame.size.width, legend.frame.size.height)];
         [self.belowView addSubview:legend];
     }
     else {
@@ -104,6 +104,14 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
+}
+
+- (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
 @end

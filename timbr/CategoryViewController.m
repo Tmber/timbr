@@ -41,8 +41,10 @@
     
     self.fieldsTableView.dataSource = self;
 
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(onCancelButtonPress)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(onSaveButtonPress)];
+    self.fieldsTableView.allowsMultipleSelectionDuringEditing = NO;
+
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(onCancelButtonPress)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(onSaveButtonPress)];
     
     // to stop navigation controller from hiding my controls http://stackoverflow.com/a/18825253/566878
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -53,6 +55,23 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+// Override to support conditional editing of the table view.
+// This only needs to be implemented if you are going to be returning NO
+// for some items. By default, all items are editable.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Field* field = self.workingLogCategory.schemaEntry.fields[indexPath.row];
+        
+        [self deleteField:field];
+    }
 }
 
 #pragma mark - Table view methods
@@ -160,6 +179,14 @@
 }
 
 - (void)fieldViewControllerFieldUpdated:(Field *)field {
+    [self addField:field];
+}
+
+- (void)fieldsTableViewCellDeletePressed:(FieldsTableViewCell *)cell {
+    [self deleteField:cell.field];
+}
+
+-(void)addField:(Field *)field {
     [self.workingLogCategory.schemaEntry.fields addObject:field];
     
     for (Entry *entry in self.workingLogCategory.entries) {
@@ -169,12 +196,12 @@
     [self.fieldsTableView reloadData];
 }
 
-- (void)fieldsTableViewCellDeletePressed:(FieldsTableViewCell *)cell {
-    [self.workingLogCategory.schemaEntry.fields removeObject:cell.field];
+-(void)deleteField:(Field *)field {
+    [self.workingLogCategory.schemaEntry.fields removeObject:field];
     for (Entry *entry in self.workingLogCategory.entries) {
         Field *toRemove = nil;
         for (Field *field in entry.fields) {
-            if (field.name == cell.field.name) {
+            if (field.name == field.name) {
                 toRemove = field;
             }
         }

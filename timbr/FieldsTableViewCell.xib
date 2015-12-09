@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -14,28 +14,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="418" height="88.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJo-qJ-Yzf">
-                        <rect key="frame" x="8" y="30" width="46" height="30"/>
-                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="46" id="3eC-rU-SRg"/>
-                            <constraint firstAttribute="height" constant="30" id="zvc-xd-EYA"/>
-                        </constraints>
-                        <state key="normal" title="Delete">
-                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                        <connections>
-                            <action selector="onDeletePress:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2D7-oQ-G8D"/>
-                        </connections>
-                    </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BM9-ko-cxi">
-                        <rect key="frame" x="372" y="34" width="38" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" misplaced="YES" text="Attribute" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Bv-SK-pnX">
+                        <rect key="frame" x="8" y="34" width="266" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Attribute" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Bv-SK-pnX">
-                        <rect key="frame" x="62" y="34" width="67" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BM9-ko-cxi">
+                        <rect key="frame" x="372" y="34" width="38" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -43,12 +29,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="BM9-ko-cxi" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2AW-VM-rOw"/>
+                    <constraint firstItem="9Bv-SK-pnX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="358-Rm-kg7"/>
                     <constraint firstItem="9Bv-SK-pnX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Fmh-of-lMb"/>
-                    <constraint firstItem="BM9-ko-cxi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9Bv-SK-pnX" secondAttribute="trailing" constant="8" id="Kl3-Vc-wkO"/>
-                    <constraint firstItem="DJo-qJ-Yzf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="O0W-46-DJc"/>
+                    <constraint firstItem="BM9-ko-cxi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9Bv-SK-pnX" secondAttribute="trailing" constant="16" id="HYN-AN-bvS"/>
                     <constraint firstItem="BM9-ko-cxi" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="n7C-tW-PrX"/>
-                    <constraint firstItem="9Bv-SK-pnX" firstAttribute="leading" secondItem="DJo-qJ-Yzf" secondAttribute="trailing" constant="8" id="r7M-1D-eVn"/>
-                    <constraint firstItem="DJo-qJ-Yzf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tid-jQ-vCg"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

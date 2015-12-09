@@ -8,6 +8,8 @@
 
 #import "EntryViewController.h"
 #import "FieldDataTableViewCell.h"
+#import "HomeCollectionViewController.h"
+#import "DetailsViewController.h"
 
 @interface EntryViewController () <UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -58,7 +60,7 @@
 
 #pragma mark - private methods
 - (void)onCancelButtonPress {
-    //[self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -71,7 +73,17 @@
     }
 
     //[self dismissViewControllerAnimated:YES completion:nil];
-    [self.navigationController popViewControllerAnimated:YES];
+    UIViewController *vc = [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
+    if (vc.class == HomeCollectionViewController.class) {
+        DetailsViewController *dvc = [[DetailsViewController alloc] init];
+        
+        dvc.logCategory = self.logCategory;
+        
+        [self.navigationController pushViewController:dvc animated:YES];
+    }
+    else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 /*

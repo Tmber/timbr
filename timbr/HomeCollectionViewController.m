@@ -7,12 +7,12 @@
 //
 
 #import "HomeCollectionViewController.h"
-//#import "DetailsTableViewController.h"
 #import "DetailsViewController.h"
 #import "LogCollection.h"
 #import "LogCategory.h"
 #import "CategoryViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "EntryViewController.h"
 
 @interface HomeCollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
@@ -28,10 +28,16 @@
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:categoryViewController];
     
     [self presentViewController:nvc animated:YES completion:nil];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
+    self.navigationItem.leftBarButtonItem = nil;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+        self.title = @"My logs";
+    [self.navigationItem setHidesBackButton:YES animated:YES];
 
     self.dataArray = [[NSArray alloc] initWithObjects:[LogCollection sharedInstance].logCategories, nil];
     UINib *cellNib = [UINib nibWithNibName:@"HomeCollectionViewCell" bundle:nil];
@@ -43,6 +49,8 @@
     
     [self.collectionView setCollectionViewLayout:flowLayout];
     
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
 //    self.navigationController.navigationBar.barTintColor = [self colorFromHexString:@"FF86FF"];
 //    self.navigationController.navigationBar.translucent = NO;
 }
@@ -81,9 +89,30 @@
     plus.layer.borderWidth = 1;
     plus.layer.cornerRadius = 5;
     plus.layer.masksToBounds = YES;
+    [plus addTarget:self action:@selector(myClickEvent:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
 }
+
+- (IBAction)myClickEvent:(id)sender {
+    
+    UICollectionViewCell *cell = (UICollectionViewCell*)[[sender superview] superview];
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    
+    if (indexPath == nil) {
+        assert(false);
+        return;
+    }
+    else {
+        NSMutableArray *data = [self.dataArray objectAtIndex:indexPath.section];
+        LogCategory *logCategory = [data objectAtIndex:indexPath.row];
+        EntryViewController *entryViewController = [[EntryViewController alloc] init];
+        entryViewController.logCategory = logCategory;
+        //[self presentViewController:entryViewController animated:YES completion:nil];
+        [self.navigationController pushViewController:entryViewController animated:YES];
+    }
+}
+
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return [self.dataArray count];
@@ -98,14 +127,12 @@
 {
     NSMutableArray *data = [self.dataArray objectAtIndex:indexPath.section];
     LogCategory *logCategory = [data objectAtIndex:indexPath.row];
-
-    // DetailsTableViewController *detailsTableViewController = [[DetailsTableViewController alloc] init];
-    DetailsViewController *detailsTableViewController = [[DetailsViewController alloc] init];
     
-    detailsTableViewController.logCategory = logCategory;
+    DetailsViewController *dvc = [[DetailsViewController alloc] init];
     
-    // TODO detailsTableViewController.logCategory = figure out from sender
-    [self.navigationController pushViewController:detailsTableViewController animated:YES];
+    dvc.logCategory = logCategory;
+    
+    [self.navigationController pushViewController:dvc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-//#import "DetailsTableViewController.h"
 #import "DetailsViewController.h"
 #import "HomeCollectionViewController.h"
 #import "LoginViewController.h"
@@ -30,6 +29,8 @@
                   clientKey:@"B9DLF9A4GEeDMR0IA73ZrdQiZJImfMbhlYcXIKit"];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    [[UINavigationBar appearance] setTintColor:[self colorFromHexString:@"#8334DE"]];
     
     [self attemptLogin];
     
@@ -153,6 +154,14 @@
     _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     return _managedObjectContext;
+}
+
+- (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
 #pragma mark - Core Data Saving support

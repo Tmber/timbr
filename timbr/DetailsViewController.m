@@ -13,6 +13,7 @@
 #import "Entry.h"
 #import "Field.h"
 #import "EntryViewController.h"
+#import "UIViewController+BackButtonHandler.h"
 
 
 @interface DetailsViewController ()
@@ -41,6 +42,8 @@
     // A little trick for removing the cell separators
     self.tableView.tableFooterView = [UIView new];
     
+    self.tableView.allowsSelection = NO;
+    
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     if (self.logCategory.entries.count > 0) {
@@ -49,6 +52,9 @@
     
     self.title = self.logCategory.name;
     
+    self.navigationItem.leftBarButtonItem.tintColor = [self colorFromHexString:@"#8334DE"];
+    self.navigationItem.rightBarButtonItem.tintColor = [self colorFromHexString:@"#8334DE"];
+    
 //    [self.addEntry setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:131.0 / 255.0 green:52.0 / 255.0 blue:222.0 / 255.0 alpha:1.00f]] forState:UIControlStateNormal];
 //    [self.addEntry setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:104.0 / 255.0 green:41.0 / 255.0 blue:177.0 / 255.0 alpha:1.00f]] forState:UIControlStateHighlighted];
     
@@ -56,7 +62,33 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(onEditCategoryButtonPress)];
+    
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
+
 }
+
+-(BOOL) navigationShouldPopOnBackButton
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    return NO;
+}
+
+
+-(void) overrideBack{
+    
+    UIButton *transparentButton = [[UIButton alloc] init];
+    [transparentButton setFrame:CGRectMake(0,0, 120, 60)];
+    [transparentButton setBackgroundColor:[UIColor clearColor]];
+    [transparentButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationController.navigationBar addSubview:transparentButton];
+}
+
+-(void)backAction:(UIBarButtonItem *)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 
 - (UIImage *)imageWithColor:(UIColor *)color {
     CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
@@ -206,7 +238,8 @@
             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
             [formatter setMaximumFractionDigits:2];
             [formatter setMinimumFractionDigits:2];
-            cell.valueLabel.text = [formatter stringFromNumber:field.numberValue];
+//            cell.valueLabel.text = [formatter stringFromNumber:field.numberValue];
+            cell.valueLabel.text = field.getFormattedValue;
         }
         return cell;
     }
@@ -229,10 +262,11 @@
         }
         
         // http://stackoverflow.com/a/7654733/566878
-        return [names componentsJoinedByString: @", "];
+//        return [names componentsJoinedByString: @", "];
+        return nil;
     }
     else {
-        return [NSString stringWithFormat:@"Entry #%ld", (long)section];
+        return [NSString stringWithFormat:@"Entry %ld", (long)section];
     }
 }
 
@@ -243,6 +277,30 @@
     else {
         return self.tableView.estimatedRowHeight;
     }
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)];
+    if (section == 0)
+        return [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    else {
+        [headerView setBackgroundColor:[self colorFromHexString:@"#F5F5F5"]];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, tableView.bounds.size.width - 10, 20)];
+        label.text = [NSString stringWithFormat:@"Entry %ld", (long)section];
+        label.textColor = [self colorFromHexString:@"#999999"];
+        label.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+        [headerView addSubview:label];
+        return headerView;
+    }
+}
+
+- (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
 @end

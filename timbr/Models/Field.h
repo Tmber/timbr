@@ -22,6 +22,7 @@ FOUNDATION_EXPORT NSString *const FieldTypeCurrency;
 @property (nonatomic, strong) NSString *stringValue;
 
 -(UIKeyboardType) getKeyboardType;
+- (NSString *) getFormattedValue;
 
 +(Field *) getMockField1;
 +(Field *) getMockField2;
