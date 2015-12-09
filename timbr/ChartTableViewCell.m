@@ -22,6 +22,7 @@
 
 - (void) setupChart {
     [[self.belowView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [[self.subView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     if (self.logCategory.entries.count > 0 && self.logCategory.schemaEntry.fields.count > 0) {
         NSArray* colorArray = @[
                                        PNGreen,

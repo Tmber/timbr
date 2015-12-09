@@ -163,6 +163,10 @@
         [[LogCollection sharedInstance].logCategories replaceObjectAtIndex:index withObject:self.workingLogCategory];
     }
     
+    if (self.workingLogCategory.schemaEntry.fields.count == 0) {
+        self.workingLogCategory.entries = [NSMutableArray array];
+    }
+    
     [self.delegate categoryViewControllerLogCategoryUpdated:self.workingLogCategory];
     
     [self dismissViewControllerAnimated:YES completion:nil];
