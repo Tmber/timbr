@@ -49,6 +49,9 @@
     
     self.title = self.logCategory.name;
     
+    self.navigationItem.leftBarButtonItem.tintColor = [self colorFromHexString:@"#8334DE"];
+    self.navigationItem.rightBarButtonItem.tintColor = [self colorFromHexString:@"#8334DE"];
+    
 //    [self.addEntry setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:131.0 / 255.0 green:52.0 / 255.0 blue:222.0 / 255.0 alpha:1.00f]] forState:UIControlStateNormal];
 //    [self.addEntry setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:104.0 / 255.0 green:41.0 / 255.0 blue:177.0 / 255.0 alpha:1.00f]] forState:UIControlStateHighlighted];
     
@@ -222,6 +225,14 @@
     else {
         return self.tableView.estimatedRowHeight;
     }
+}
+
+- (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
 
