@@ -17,6 +17,7 @@
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="zu2-LL-Dqn">
                     <rect key="frame" x="8" y="8" width="584" height="584"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Yn-Am-3ZM">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -29,9 +30,15 @@
                     </connections>
                 </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2jz-uC-Maq">
-                    <rect key="frame" x="238" y="547" width="124" height="30"/>
-                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Add Log Category"/>
+                    <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                    <color key="backgroundColor" red="0.43137254901960786" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Gsu-KS-v3Z"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                    <state key="normal" title="Add Log Category">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="onAddLogCategoryPressed:" destination="-1" eventType="touchUpInside" id="93S-Ry-kc5"/>
                     </connections>
@@ -39,8 +46,10 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="2jz-uC-Maq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7hr-AZ-0FX"/>
                 <constraint firstItem="zu2-LL-Dqn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="KSr-D5-6cf"/>
-                <constraint firstAttribute="bottom" secondItem="2jz-uC-Maq" secondAttribute="bottom" constant="23" id="T5l-GM-hFN"/>
+                <constraint firstAttribute="bottom" secondItem="2jz-uC-Maq" secondAttribute="bottom" id="T5l-GM-hFN"/>
+                <constraint firstAttribute="trailing" secondItem="2jz-uC-Maq" secondAttribute="trailing" id="VSO-KY-nyG"/>
                 <constraint firstAttribute="trailing" secondItem="zu2-LL-Dqn" secondAttribute="trailing" constant="8" id="ct0-pR-XTL"/>
                 <constraint firstAttribute="bottom" secondItem="zu2-LL-Dqn" secondAttribute="bottom" constant="8" id="nRQ-4g-XkU"/>
                 <constraint firstItem="2jz-uC-Maq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xkj-lc-cJ0"/>

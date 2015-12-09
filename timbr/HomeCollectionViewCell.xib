@@ -13,17 +13,22 @@
                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Waz-Hh-8np">
-                        <rect key="frame" x="63" y="90" width="75" height="21"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Waz-Hh-8np">
+                        <rect key="frame" x="4" y="182" width="192" height="18"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bD-Py-KfE">
-                        <rect key="frame" x="162" y="8" width="30" height="30"/>
-                        <color key="backgroundColor" red="0.83454592360000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <state key="normal" title="Add">
-                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bD-Py-KfE">
+                        <rect key="frame" x="165" y="0.0" width="35" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="G61-Om-PlY"/>
+                            <constraint firstAttribute="width" constant="35" id="ksz-Tv-9wL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
+                        <state key="normal" title="+">
+                            <color key="titleColor" red="0.51372549020000002" green="0.20392156859999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
                     <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" tag="10" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_rowing_48pt" translatesAutoresizingMaskIntoConstraints="NO" id="pcs-VE-clH">
@@ -32,17 +37,24 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Waz-Hh-8np" firstAttribute="centerY" secondItem="SeS-Aw-Loz" secondAttribute="centerY" id="4Dn-Wj-JY9"/>
                 <constraint firstItem="Waz-Hh-8np" firstAttribute="centerX" secondItem="SeS-Aw-Loz" secondAttribute="centerX" id="Dv3-aD-RwC"/>
-                <constraint firstItem="3bD-Py-KfE" firstAttribute="top" secondItem="SeS-Aw-Loz" secondAttribute="top" constant="8" id="FHw-aa-gCC"/>
+                <constraint firstItem="3bD-Py-KfE" firstAttribute="top" secondItem="SeS-Aw-Loz" secondAttribute="top" id="FHw-aa-gCC"/>
                 <constraint firstAttribute="bottom" secondItem="pcs-VE-clH" secondAttribute="bottom" id="Pg3-iY-0ml"/>
+                <constraint firstAttribute="trailing" secondItem="Waz-Hh-8np" secondAttribute="trailing" constant="4" id="ZjL-Pu-6ot"/>
                 <constraint firstAttribute="trailing" secondItem="pcs-VE-clH" secondAttribute="trailing" id="lFw-cq-UHT"/>
                 <constraint firstItem="pcs-VE-clH" firstAttribute="top" secondItem="SeS-Aw-Loz" secondAttribute="top" id="mi2-sg-s6L"/>
-                <constraint firstAttribute="trailing" secondItem="3bD-Py-KfE" secondAttribute="trailing" constant="8" id="pO1-OG-EBF"/>
+                <constraint firstItem="Waz-Hh-8np" firstAttribute="leading" secondItem="SeS-Aw-Loz" secondAttribute="leading" constant="4" id="nzj-rU-Z6t"/>
+                <constraint firstAttribute="trailing" secondItem="3bD-Py-KfE" secondAttribute="trailing" id="pO1-OG-EBF"/>
                 <constraint firstItem="pcs-VE-clH" firstAttribute="leading" secondItem="SeS-Aw-Loz" secondAttribute="leading" id="qta-TM-ycy"/>
+                <constraint firstAttribute="bottom" secondItem="Waz-Hh-8np" secondAttribute="bottom" id="rrf-r1-1j9"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="4Dn-Wj-JY9"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="352" y="293"/>
         </collectionViewCell>
     </objects>
