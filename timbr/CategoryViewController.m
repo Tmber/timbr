@@ -159,7 +159,6 @@
     if (self.logCategory == nil) {
         [[LogCollection sharedInstance].logCategories addObject:self.workingLogCategory];
     } else {
-        NSLog(@"onSaveButtonPress %@", self.workingLogCategory.name);
         NSUInteger index = [[LogCollection sharedInstance].logCategories indexOfObject:self.logCategory];
         [[LogCollection sharedInstance].logCategories replaceObjectAtIndex:index withObject:self.workingLogCategory];
     }
@@ -196,12 +195,12 @@
     [self.fieldsTableView reloadData];
 }
 
--(void)deleteField:(Field *)field {
-    [self.workingLogCategory.schemaEntry.fields removeObject:field];
+-(void)deleteField:(Field *)fieldToRemove {
+    [self.workingLogCategory.schemaEntry.fields removeObject:fieldToRemove];
     for (Entry *entry in self.workingLogCategory.entries) {
         Field *toRemove = nil;
         for (Field *field in entry.fields) {
-            if (field.name == field.name) {
+            if (field.name == fieldToRemove.name) {
                 toRemove = field;
             }
         }

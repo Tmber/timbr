@@ -42,7 +42,7 @@
     // A little trick for removing the cell separators
     self.tableView.tableFooterView = [UIView new];
     
-    self.tableView.allowsSelection = NO;
+    self.tableView.allowsSelection = YES;
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
@@ -170,18 +170,18 @@
 
 
 - (void)onAddEntryButtonPress {
-    EntryViewController *entryViewController = [[EntryViewController alloc] init];
-    entryViewController.logCategory = self.logCategory;
-    entryViewController.entry = nil; // To make sure a new entry is created
-    //[self presentViewController:entryViewController animated:YES completion:nil];
-    [self.navigationController pushViewController:entryViewController animated:YES];
+    [self createUpdateEntry:nil];
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self createUpdateEntry:[self.logCategory.entries objectAtIndex:(indexPath.section - 1)]];
+}
+
+-(void)createUpdateEntry:(Entry *)entry {
     EntryViewController *entryViewController = [[EntryViewController alloc] init];
     entryViewController.logCategory = self.logCategory;
-    entryViewController.entry = [self.logCategory.entries objectAtIndex:(indexPath.section - 1)];
+    entryViewController.entry = entry;
     [self.navigationController pushViewController:entryViewController animated:YES];
 }
 
@@ -199,7 +199,6 @@
 - (void)categoryViewControllerLogCategoryUpdated:(LogCategory *)logCategory {
     self.logCategory = logCategory;
     self.title = self.logCategory.name;
-    NSLog(@"categoryViewControllerLogCategoryUpdated %@", self.logCategory.name);
     [self.tableView reloadData];
 }
 
