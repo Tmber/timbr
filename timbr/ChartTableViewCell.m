@@ -52,8 +52,7 @@
     for (NSArray *array in yLabelData) {
         NSArray * dataArray = array;
         PNLineChartData *lineChartData = [PNLineChartData new];
-        Entry *entry = [self.logCategory.entries objectAtIndex:0];
-        Field *field = [entry.fields objectAtIndex:fieldIndex];
+        Field *field = [self.logCategory.schemaEntry.fields objectAtIndex:fieldIndex];
         lineChartData.dataTitle = field.name;
         fieldIndex++;
         lineChartData.color = [colorArray objectAtIndex:fieldIndex];
