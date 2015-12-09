@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "DetailsTableViewController.h"
+//#import "DetailsTableViewController.h"
+#import "DetailsViewController.h"
 #import "HomeCollectionViewController.h"
 #import "LoginViewController.h"
 #import "CategoryViewController.h"
