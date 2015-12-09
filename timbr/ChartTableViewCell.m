@@ -21,7 +21,8 @@
 }
 
 - (void) setupChart {
-    if (self.logCategory.entries.count > 0) {
+    [[self.belowView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    if (self.logCategory.entries.count > 0 && self.logCategory.schemaEntry.fields.count > 0) {
         NSArray* colorArray = @[
                                        PNGreen,
                                        PNTitleColor,
@@ -68,6 +69,7 @@
         
         lineChart.chartData = chartDataArray;
         [lineChart strokeChart];
+        [lineChart updateChartData:chartDataArray];
         
         [self.subView addSubview:lineChart];
         
