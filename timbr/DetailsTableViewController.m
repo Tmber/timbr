@@ -14,6 +14,7 @@
 #import "Field.h"
 #import "EntryViewController.h"
 
+
 @interface DetailsTableViewController ()
 
 @end
@@ -24,8 +25,19 @@
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"DetailsTableViewCell" bundle:nil] forCellReuseIdentifier:@"DetailsTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"ChartTableViewCell" bundle:nil] forCellReuseIdentifier:@"ChartTableViewCell"];
+    
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
+    
+    // A little trick for removing the cell separators
+    self.tableView.tableFooterView = [UIView new];
 
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    if (self.logCategory.entries.count > 0) {
+        self.navigationController.hidesBarsOnSwipe = YES;
+    }
+    
     self.title = self.logCategory.name;
 
     // Uncomment the following line to preserve selection between presentations.
@@ -33,8 +45,80 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add Entry" style:UIBarButtonItemStylePlain target:self action:@selector(onAddEntryButtonPress)];
+    if (self.logCategory.entries.count > 1) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add Entry" style:UIBarButtonItemStylePlain target:self action:@selector(onAddEntryButtonPress)];
+    }
 }
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [UIImage imageNamed:@"ic_event_note_48pt"];
+}
+
+
+- (CAAnimation *)imageAnimationForEmptyDataSet:(UIScrollView *)scrollView
+{
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath: @"transform"];
+    
+    animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
+    animation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI_2, 0.0, 0.0, 1.0)];
+    
+    animation.duration = 0.25;
+    animation.cumulative = YES;
+    animation.repeatCount = MAXFLOAT;
+    
+    return animation;
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = [NSString stringWithFormat: @"Add some entries to your %@ log!", self.logCategory.name];
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"Make a lumbr jack happy";
+    
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraph};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [UIColor whiteColor];
+}
+
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return -self.tableView.tableHeaderView.frame.size.height/2.0f;
+}
+
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
+{
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0f], NSForegroundColorAttributeName: [UIColor colorWithRed:131.0 / 255.0 green:52.0 / 255.0 blue:222.0 / 255.0 alpha:1.0f]};
+    
+    return [[NSAttributedString alloc] initWithString:@"Add Entry" attributes:attributes];
+}
+
+
+- (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView
+{
+    [self onAddEntryButtonPress];
+}
+
+
 
 - (void)onAddEntryButtonPress {
     EntryViewController *entryViewController = [[EntryViewController alloc] init];
@@ -57,12 +141,17 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0) {
-        return 1;
+    if (self.logCategory.entries.count > 0){
+        if (section == 0) {
+            return 1;
+        }
+        else {
+            Entry *tree = [self.logCategory.entries objectAtIndex:(section - 1)];
+            return tree.fields.count;
+        }
     }
     else {
-        Entry *tree = [self.logCategory.entries objectAtIndex:(section - 1)];
-        return tree.fields.count;
+        return 0;
     }
 }
 
@@ -91,7 +180,12 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.logCategory.entries.count + 1;
+    if (self.logCategory.entries.count > 0) {
+        return self.logCategory.entries.count + 1;
+    }
+    else {
+        return 0;
+    }
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
