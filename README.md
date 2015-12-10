@@ -23,3 +23,5 @@ Tim wants to know the performance of his car. Using the timbr app he can log the
 
 ![Wireframe](http://i.imgur.com/zmOXVJH.jpg)
 
+![Walkthrough](http://i.imgur.com/icaAiqy.gif)
+
