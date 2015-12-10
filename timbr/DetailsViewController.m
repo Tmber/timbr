@@ -46,9 +46,9 @@
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-    if (self.logCategory.entries.count > 0) {
-        self.navigationController.hidesBarsOnSwipe = YES;
-    }
+//    if (self.logCategory.entries.count > 0) {
+//        self.navigationController.hidesBarsOnSwipe = YES;
+//    }
     
     self.title = self.logCategory.name;
     

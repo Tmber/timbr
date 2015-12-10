@@ -18,5 +18,8 @@
 @property (nonatomic, strong) UIImage *image;
 
 +(LogCategory *) getMockLog;
++(LogCategory *) carMockLog;
++(LogCategory *) fitnessMockLog;
++(LogCategory *) runningMockLog;
 
 @end

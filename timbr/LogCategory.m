@@ -60,4 +60,40 @@
     return log;
 }
 
++(LogCategory *)carMockLog{
+    LogCategory *log = [[LogCategory alloc] init];
+    log.name = @"Car Maintenance";
+    log.image = [UIImage imageNamed:@"ic_build_48pt"];
+    log.entries = [NSMutableArray array];
+    log.schemaEntry = [Entry carMockEntry1];
+    [log.entries addObject:[Entry carMockEntry1]];
+    [log.entries addObject:[Entry carMockEntry2]];
+    [log.entries addObject:[Entry carMockEntry3]];
+    return log;
+}
+
++(LogCategory *)fitnessMockLog{
+    LogCategory *log = [[LogCategory alloc] init];
+    log.name = @"Fitness";
+    log.image = [UIImage imageNamed:@"ic_favorite_border_48pt"];
+    log.entries = [NSMutableArray array];
+    log.schemaEntry = [Entry fitnessMockEntry1];
+    [log.entries addObject:[Entry fitnessMockEntry1]];
+    [log.entries addObject:[Entry fitnessMockEntry2]];
+    [log.entries addObject:[Entry fitnessMockEntry3]];
+    return log;
+}
+
++(LogCategory *)runningMockLog{
+    LogCategory *log = [[LogCategory alloc] init];
+    log.name = @"Running";
+    log.image = [UIImage imageNamed:@"ic_timeline_48pt"];
+    log.entries = [NSMutableArray array];
+    log.schemaEntry = [Entry runningMockEntry1];
+    [log.entries addObject:[Entry runningMockEntry1]];
+    [log.entries addObject:[Entry runningMockEntry2]];
+    [log.entries addObject:[Entry runningMockEntry3]];
+    return log;
+}
+
 @end

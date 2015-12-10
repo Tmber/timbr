@@ -17,4 +17,16 @@
 +(Entry *)getMockEntry3;
 +(Entry *)getMockEntry4;
 
++(Entry *)carMockEntry1;
++(Entry *)carMockEntry2;
++(Entry *)carMockEntry3;
+
++(Entry *)fitnessMockEntry1;
++(Entry *)fitnessMockEntry2;
++(Entry *)fitnessMockEntry3;
+
++(Entry *)runningMockEntry1;
++(Entry *)runningMockEntry2;
++(Entry *)runningMockEntry3;
+
 @end

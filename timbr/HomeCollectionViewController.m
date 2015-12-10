@@ -13,6 +13,7 @@
 #import "CategoryViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "EntryViewController.h"
+#import "LoginViewController.h"
 
 @interface HomeCollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
@@ -31,7 +32,6 @@
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
-    self.navigationItem.leftBarButtonItem = nil;
 }
 
 - (void)viewDidLoad {
@@ -53,6 +53,21 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
 //    self.navigationController.navigationBar.barTintColor = [self colorFromHexString:@"FF86FF"];
 //    self.navigationController.navigationBar.translucent = NO;
+    UIBarButtonItem *logout = [[UIBarButtonItem alloc]
+                               initWithTitle:@"Logout"
+                               style:UIBarButtonItemStylePlain
+                               target:self
+                               action:@selector(onLogout:)];
+    self.navigationItem.leftBarButtonItem = logout;
+}
+
+-(IBAction)onLogout:(id)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:nil forKey:@"email"];
+    [defaults setObject:nil forKey:@"password"];
+    [defaults synchronize];
+    LoginViewController *lvc = [[LoginViewController alloc] init];
+    [self.navigationController setViewControllers:@[lvc] animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

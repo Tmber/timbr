@@ -38,6 +38,14 @@ NSString *const FieldTypeCurrency = @"Currency";
     return copy;
 }
 
++(Field *) mockField:(NSNumber *)num :(NSString *)name :(NSString *)dataType{
+    Field *field = [[Field alloc] init];
+    field.numberValue = num;
+    field.name = name;
+    field.dataType = dataType;
+    return field;
+}
+
 - (NSString *) getFormattedValue {
     if (self.dataType == FieldTypeNumber) {
         return [NSString stringWithFormat:@"%@", (self.numberValue != nil) ? self.numberValue : @0];

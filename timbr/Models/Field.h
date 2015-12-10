@@ -31,4 +31,14 @@ FOUNDATION_EXPORT NSString *const FieldTypeCurrency;
 +(Field *) getMockField1:(double)num;
 +(Field *) getMockField2:(double)num;
 
++(Field *) mockField:(NSNumber *)num :(NSString *)name :(NSString *)dataType;
+
+//+(Field *) mockMileage:(NSNumber *)num :(NSString *)name;
+//+(Field *) mockGallons:(NSNumber *)num :(NSString *)name;
+//+(Field *) mockGasPrice:(NSNumber *)num :(NSString *)name;
+//
+//+(Field *) mockWeight:(NSNumber *)num :(NSString *)name;
+//+(Field *) mockGunSize:(NSNumber *)num :(NSString *)name;
+//+(Field *) mockCalories:(NSNumber *)num :(NSString *)name;
+
 @end
