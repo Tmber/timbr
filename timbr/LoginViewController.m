@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
 #import "HomeCollectionViewController.h"
-
+#import "MBProgressHUD.h"
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailText;
 @property (weak, nonatomic) IBOutlet UITextField *password;
@@ -35,13 +35,15 @@
     user.username = user.email;
     
     
-    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject:self.emailText.text forKey:@"email"];
             [defaults setObject:self.password.text forKey:@"password"];
             [defaults synchronize];
+            HomeCollectionViewController *hvc = [[HomeCollectionViewController alloc] init];
+            [self.navigationController setViewControllers:@[hvc] animated:YES];
         } else {   NSString *errorString = [error userInfo][@"error"];   // Show the errorString somewhere and let the user try again.
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Signup Error!"
                                                                            message:errorString
@@ -54,9 +56,11 @@
             [self presentViewController:alert animated:YES completion:nil];
         }
     }];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 - (IBAction)onLogin:(id)sender {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [PFUser logInWithUsernameInBackground:self.emailText.text password:self.password.text
                                     block:^(PFUser *user, NSError *error) {
                                         if (user) {
@@ -81,6 +85,7 @@
                                             [self presentViewController:alert animated:YES completion:nil];
                                         }
                                     }];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 /*

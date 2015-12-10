@@ -42,6 +42,9 @@
         [formatter setMinimumFractionDigits:2];
         self.fieldValueTextField.text = [formatter stringFromNumber:self.field.numberValue];
     }
+    else {
+        self.fieldValueTextField.text = [NSString stringWithFormat:@"%@", @0];
+    }
     
     self.fieldValueTextField.textAlignment = NSTextAlignmentRight;
     [self.fieldValueTextField setKeyboardType:[self.field getKeyboardType]];

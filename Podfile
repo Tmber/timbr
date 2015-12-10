@@ -8,4 +8,5 @@ target 'timbr' do
   pod 'JBChartView'
   pod 'Parse'
   pod 'DZNEmptyDataSet'
+  pod 'MBProgressHUD', '~> 0.9.1'
 end
