@@ -42,6 +42,7 @@
             [defaults setObject:self.emailText.text forKey:@"email"];
             [defaults setObject:self.password.text forKey:@"password"];
             [defaults synchronize];
+            [self onLogin:nil];
         } else {   NSString *errorString = [error userInfo][@"error"];   // Show the errorString somewhere and let the user try again.
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Signup Error!"
                                                                            message:errorString

@@ -13,8 +13,9 @@
 #import "LogCategory.h"
 #import "Entry.h"
 #import "IconPickerViewController.h"
+#import "AddEntryTableViewCell.h"
 
-@interface CategoryViewController () <UITableViewDataSource, FieldsTableViewCellDelegate, FieldViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, IconPickerViewControllerDelegate>
+@interface CategoryViewController () <UITableViewDataSource, FieldsTableViewCellDelegate, FieldViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, IconPickerViewControllerDelegate, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *fieldsTableView;
 @property (weak, nonatomic) IBOutlet UITextField *categoryNameTextBox;
@@ -38,6 +39,7 @@
     }
 
     [self.fieldsTableView registerNib:[UINib nibWithNibName:@"FieldsTableViewCell" bundle:nil] forCellReuseIdentifier:@"FieldsTableViewCell"];
+    [self.fieldsTableView registerNib:[UINib nibWithNibName:@"AddEntryTableViewCell" bundle:nil] forCellReuseIdentifier:@"AddEntryTableViewCell"];
     
     self.fieldsTableView.dataSource = self;
 
@@ -77,16 +79,28 @@
 #pragma mark - Table view methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.workingLogCategory.schemaEntry.fields.count;
+    return self.workingLogCategory.schemaEntry.fields.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == self.workingLogCategory.schemaEntry.fields.count) {
+        AddEntryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddEntryTableViewCell"];
+        [cell.addEntryButton addTarget:self action:@selector(onAddFieldButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+        return cell;
+    }
+    
     FieldsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FieldsTableViewCell"];
     
     cell.field = self.workingLogCategory.schemaEntry.fields[indexPath.row];
     cell.delegate = self;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == self.workingLogCategory.schemaEntry.fields.count) {
+        [self onAddFieldButtonPress:nil];
+    }
 }
 
 - (IBAction)onSetImageButtonPress:(id)sender {

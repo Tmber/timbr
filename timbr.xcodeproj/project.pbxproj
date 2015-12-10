@@ -45,6 +45,8 @@
 		F9AB7E501C0E4B9E005BB778 /* HomeCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9AB7E4B1C0E4B9E005BB778 /* HomeCollectionViewController.xib */; };
 		F9AB7E511C0E4B9E005BB778 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9AB7E4C1C0E4B9E005BB778 /* LoginViewController.m */; };
 		F9AB7E521C0E4B9E005BB778 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9AB7E4E1C0E4B9E005BB778 /* LoginViewController.xib */; };
+		F9B3044C1C19ED4200451F85 /* AddEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B3044A1C19ED4200451F85 /* AddEntryTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		F9B3044D1C19ED4200451F85 /* AddEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9B3044B1C19ED4200451F85 /* AddEntryTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +110,9 @@
 		F9AB7E4C1C0E4B9E005BB778 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F9AB7E4D1C0E4B9E005BB778 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F9AB7E4E1C0E4B9E005BB778 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		F9B304491C19ED4200451F85 /* AddEntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEntryTableViewCell.h; sourceTree = "<group>"; };
+		F9B3044A1C19ED4200451F85 /* AddEntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEntryTableViewCell.m; sourceTree = "<group>"; };
+		F9B3044B1C19ED4200451F85 /* AddEntryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddEntryTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +245,9 @@
 				F6967C141C1165B100ED1765 /* FieldDataTableViewCell.m */,
 				F6967C151C1165B100ED1765 /* FieldDataTableViewCell.xib */,
 				F980FBCF1C16ABD70003734D /* IconPickerCollectionViewCell.xib */,
+				F9B304491C19ED4200451F85 /* AddEntryTableViewCell.h */,
+				F9B3044A1C19ED4200451F85 /* AddEntryTableViewCell.m */,
+				F9B3044B1C19ED4200451F85 /* AddEntryTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -321,6 +329,7 @@
 				7A8582BF1BFE797A001D96F5 /* Assets.xcassets in Resources */,
 				7A8583121C00247C001D96F5 /* DetailsTableViewCell.xib in Resources */,
 				F6DC76B01C0EE52900DBD2BD /* FieldViewController.xib in Resources */,
+				F9B3044D1C19ED4200451F85 /* AddEntryTableViewCell.xib in Resources */,
 				F6DC76B51C0FAA5400DBD2BD /* FieldsTableViewCell.xib in Resources */,
 				F9AB7E481C0E4B95005BB778 /* HomeCollectionViewCell.xib in Resources */,
 				7A23FF151C03DB6C009002B8 /* ChartTableViewCell.xib in Resources */,
@@ -408,6 +417,7 @@
 				F980FBD41C16B87A0003734D /* IconPickerViewController.m in Sources */,
 				7A8582B11BFE797A001D96F5 /* main.m in Sources */,
 				7A8583111C00247C001D96F5 /* DetailsTableViewCell.m in Sources */,
+				F9B3044C1C19ED4200451F85 /* AddEntryTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
